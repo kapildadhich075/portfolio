@@ -3,7 +3,7 @@ import { Play, Brain, Settings } from "lucide-react";
 export const config = {
     hero: {
         heading: "HIMANSHU DADHICH",
-        subHeading: "Creative Strategist • Video Producer • YouTube Growth Specialist",
+        subHeading: "Creative Strategist | Video Producer | YouTube Growth Specialist",
         body: "I help brands, startups, and creators turn ideas into high-performing content through storytelling, strategy, and scalable execution.",
         buttons: {
             primary: "View Signature Work",
@@ -135,7 +135,7 @@ export const config = {
                 time: "1 year ago",
                 duration: "9:33",
                 thumbnail: "https://images.unsplash.com/photo-1628163013697-b6732389922a?q=80&w=2070&auto=format&fit=crop", // Electric scooter / tech
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             },
             {
                 id: "2",
@@ -144,7 +144,7 @@ export const config = {
                 time: "1 year ago",
                 duration: "59:30",
                 thumbnail: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop", // Sports stadium
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             },
             {
                 id: "3",
@@ -153,7 +153,7 @@ export const config = {
                 time: "8 months ago",
                 duration: "26:44",
                 thumbnail: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop", // Business school / meeting
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             },
             {
                 id: "4",
@@ -162,7 +162,7 @@ export const config = {
                 time: "1 year ago",
                 duration: "31:47",
                 thumbnail: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=2074&auto=format&fit=crop", // Green tech / innovation
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             },
             {
                 id: "5",
@@ -171,7 +171,7 @@ export const config = {
                 time: "2 years ago",
                 duration: "7:59",
                 thumbnail: "https://images.unsplash.com/photo-1616400619175-5beda3a17896?q=80&w=2070&auto=format&fit=crop", // Delivery / logistics
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             },
             {
                 id: "6",
@@ -180,7 +180,7 @@ export const config = {
                 time: "3 weeks ago",
                 duration: "14:20",
                 thumbnail: "https://images.unsplash.com/photo-1596525737671-55077bd55d4c?q=80&w=2070&auto=format&fit=crop", // Construction / bridge
-                link: "#"
+                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
             }
         ]
     },

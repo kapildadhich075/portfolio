@@ -1,5 +1,5 @@
 import { config } from "../config";
-import { Youtube, Linkedin, Instagram } from "lucide-react";
+import { Youtube, Linkedin, Instagram, Twitter } from "lucide-react";
 
 export function Contact() {
     const { contact } = config;

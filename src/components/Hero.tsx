@@ -1,16 +1,28 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { config } from "../config";
+import { HeroScene } from "./HeroScene";
 
 export function Hero() {
     const { hero } = config;
 
     return (
         <section className="relative min-h-screen flex items-center pt-20 px-6 md:px-12 overflow-hidden bg-background">
-            {/* Background Gradient */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05),transparent_40%)] pointer-events-none" />
+            {/* Full-width Background Image */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/src/assets/himanshu_hero.jpg"
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-30"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.1),transparent_50%)]" />
+            </div>
 
-            <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05),transparent_40%)] pointer-events-none z-1" />
+
+            <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                 {/* Left: Text Content */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -19,15 +31,15 @@ export function Hero() {
                     className="space-y-8"
                 >
                     <div className="space-y-2">
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary">
+                        <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-primary font-mono">
                             {hero.heading}
                         </h1>
-                        <h2 className="text-xl md:text-2xl text-secondary font-medium">
+                        <h2 className="text-xl md:text-base  text-secondary font-mono">
                             {hero.subHeading}
                         </h2>
                     </div>
 
-                    <p className="text-lg text-secondary/80 max-w-md leading-relaxed">
+                    <p className="text-lg text-secondary/80 max-w-md leading-relaxed font-mono">
                         {hero.body}
                     </p>
 
@@ -43,21 +55,20 @@ export function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Right: Visual Placeholder */}
+                {/* Right: 3D Scene */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                    className="relative aspect-video lg:aspect-[5/6] w-full rounded-2xl overflow-hidden bg-surface border border-white/5 shadow-2xl group"
+                    transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
+                    className="relative aspect-square lg:aspect-[5/6] w-full"
                 >
-                    {/* Placeholder for video/image */}
-                    <img src="/src/assets/himanshu_hero.jpg" alt="" />
+                    <HeroScene />
 
-                    {/* Scanline/Texture Overlay */}
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
-
-                    {/* Glow effect */}
-                    <div className="absolute -inset-1 bg-accent/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    {/* Floating Details */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 blur-[120px] rounded-full animate-pulse" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
+                    </div>
                 </motion.div>
             </div>
         </section>

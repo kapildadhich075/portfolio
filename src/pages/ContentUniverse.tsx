@@ -1,123 +1,242 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft, Play, Shuffle, MoreVertical } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, Play, Shuffle, Clock, Eye } from "lucide-react";
 import { config } from "../config";
 
 export function ContentUniverse() {
+    const { playlist } = config;
+    const [activeVideoId, setActiveVideoId] = useState(playlist.videos[0]?.id);
+    const playerRef = useRef<HTMLDivElement>(null);
+
+    const activeVideo = playlist.videos.find(v => v.id === activeVideoId) || playlist.videos[0];
+
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const { playlist } = config;
+    const handleVideoSelect = (id: string) => {
+        setActiveVideoId(id);
+        // On mobile, we might want to scroll to the player
+        if (window.innerWidth < 1024 && playerRef.current) {
+            playerRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const getYouTubeEmbedUrl = (url: string) => {
+        // Simple extraction of ID from common YouTube formats
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        const videoId = (match && match[2].length === 11) ? match[2] : null;
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    };
 
     return (
-        <div className="bg-background min-h-screen text-primary selection:bg-accent selection:text-black">
-            {/* Navigation (Transparent Overlay) */}
-            <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between pointer-events-none">
+        <div className="bg-background min-h-screen text-primary selection:bg-accent selection:text-black ">
+            {/* Navigation */}
+            <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex items-center justify-between">
                 <Link
                     to="/"
-                    className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 pointer-events-auto"
+                    className="flex items-center gap-2 text-sm font-medium text-white/50 hover:text-white transition-colors bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
                 </Link>
+                <Link to="/">
+                    <div className="text-5xl font-bold tracking-tighter text-primary">HD.</div>
+                </Link>
             </nav>
 
-            <div className="container mx-auto max-w-7xl px-6 md:px-12 pt-24 pb-12 h-screen-dynamic flex flex-col lg:flex-row gap-8">
-                {/* Left Sidebar (Fixed-ish look) */}
-                <div className="lg:w-[360px] flex-shrink-0">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="bg-surface/50 backdrop-blur-xl border border-white/5 rounded-2xl p-6 sticky top-24"
-                    >
-                        {/* Playlist Cover */}
-                        <div className="aspect-video w-full bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl mb-6 relative group overflow-hidden shadow-2xl">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <img src={playlist.videos[0]?.thumbnail} alt={playlist.title} className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" />
-                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-                                <Play className="absolute w-12 h-12 text-white/80 fill-white/80 group-hover:scale-110 transition-transform duration-300 z-10" />
+            <div className="container mx-auto max-w-7xl px-6 md:px-12 pt-16">
+                {/* Video Player Section */}
+                <motion.div
+                    ref={playerRef}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-20"
+                >
+                    <div className="relative aspect-video w-full rounded-[32px] overflow-hidden bg-black shadow-2xl border border-white/5">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeVideoId}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full h-full"
+                            >
+                                <iframe
+                                    src={getYouTubeEmbedUrl(activeVideo.link)}
+                                    title={activeVideo.title}
+                                    className="w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Up Next / Metadata */}
+                    <div className="mt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/5 pb-8">
+                        <div>
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{activeVideo.title}</h2>
+                            <div className="flex items-center gap-4 text-secondary/60 text-sm">
+                                <span>{playlist.author}</span>
+                                <span>•</span>
+                                <span>{activeVideo.views}</span>
+                                <span>•</span>
+                                <span>{activeVideo.time}</span>
                             </div>
-                            {/* Noise texture overlay */}
-                            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
-                            <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 rounded text-xs font-mono text-white/80">
-                                {playlist.videos.length} videos
-                            </div>
                         </div>
-
-                        <h1 className="text-2xl font-bold text-white mb-2 leading-tight">{playlist.title}</h1>
-
-                        <div className="text-sm font-medium text-white/90 mb-4">{playlist.author}</div>
-
-                        <div className="flex gap-2 text-xs text-secondary/70 mb-6">
-                            <span>{playlist.videos.length} videos</span>
-                            <span>•</span>
-                            <span>Updated today</span>
-                        </div>
-
-                        <div className="flex gap-2 mb-6">
-                            <button className="flex-1 bg-white text-black font-semibold py-2 rounded-full flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors">
-                                <Play className="w-4 h-4 fill-current" /> Play all
+                        {activeVideoId !== playlist.videos[playlist.videos.length - 1].id && (
+                            <button
+                                onClick={() => {
+                                    const currentIndex = playlist.videos.findIndex(v => v.id === activeVideoId);
+                                    handleVideoSelect(playlist.videos[currentIndex + 1].id);
+                                }}
+                                className="flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors px-6 py-3 rounded-full border border-white/10 text-white font-medium group"
+                            >
+                                Up Next: {playlist.videos[playlist.videos.findIndex(v => v.id === activeVideoId) + 1].title.substring(0, 30)}...
+                                <Play className="w-4 h-4 fill-current group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <button className="flex-1 bg-white/10 text-white font-semibold py-2 rounded-full flex items-center justify-center gap-2 hover:bg-white/20 transition-colors">
-                                <Shuffle className="w-4 h-4" /> Shuffle
-                            </button>
-                        </div>
+                        )}
+                    </div>
+                </motion.div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-                        <div className="text-sm text-secondary/80 leading-relaxed line-clamp-4">
-                            {playlist.description}
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Right Content (Video List) */}
-                <div className="flex-1 overflow-y-auto">
-                    {playlist.videos.map((video, index) => (
+                    {/* Left Column: Playlist Card */}
+                    <div className="lg:col-span-5">
                         <motion.div
-                            key={video.id}
-                            initial={{ opacity: 0, x: 20 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                            className="group flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer border border-transparent hover:border-white/5"
+                            className="bg-surface/30 backdrop-blur-sm border border-white/5 rounded-[24px] p-8 sticky  overflow-hidden group"
                         >
-                            <div className="hidden md:flex items-center justify-center w-6 text-sm text-secondary/50 font-medium">
-                                {index + 1}
-                            </div>
+                            {/* Decorative Blur */}
+                            <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 blur-[100px] pointer-events-none"></div>
 
-                            <div className="relative w-40 aspect-video bg-neutral-800 rounded-lg flex-shrink-0 overflow-hidden">
-                                {/* Thumbnail */}
-                                <div className="absolute inset-0 bg-neutral-800 group-hover:scale-105 transition-transform duration-500">
-                                    <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                            {/* Playlist Cover */}
+                            <div className="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl group/cover cursor-pointer" onClick={() => handleVideoSelect(playlist.videos[0].id)}>
+                                <img
+                                    src={playlist.videos[0].thumbnail}
+                                    alt={playlist.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-black/40 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
+                                    <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover/cover:scale-110 transition-transform duration-300">
+                                        <Play className="w-6 h-6 text-white fill-white" />
+                                    </div>
                                 </div>
-                                <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-medium text-white">
-                                    {video.duration}
-                                </div>
-                            </div>
-
-                            <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                <h3 className="text-white font-medium text-base mb-1 line-clamp-2 leading-snug group-hover:text-accent transition-colors">
-                                    {video.title}
-                                </h3>
-                                <div className="flex items-center gap-1 text-xs text-secondary">
-                                    <span>{playlist.author}</span>
-                                    <span>•</span>
-                                    <span>{video.views}</span>
-                                    <span>•</span>
-                                    <span>{video.time}</span>
+                                <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono text-white/90 border border-white/10">
+                                    {playlist.videos.length} VIDEOS
                                 </div>
                             </div>
 
-                            <div className="hidden md:flex items-center self-start opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button className="p-2 hover:bg-white/10 rounded-full text-white">
-                                    <MoreVertical className="w-4 h-4" />
+                            <h1 className="text-3xl font-bold text-white mb-2 leading-tight tracking-tight">
+                                {playlist.title}
+                            </h1>
+                            <p className="text-sm font-medium text-accent mb-6 uppercase tracking-widest">{playlist.author}</p>
+
+                            <p className="text-secondary/70 text-base leading-relaxed mb-8 max-w-md">
+                                {playlist.description}
+                            </p>
+
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={() => handleVideoSelect(playlist.videos[0].id)}
+                                    className="flex-1 bg-white text-black font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-accent transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                >
+                                    <Play className="w-4 h-4 fill-current" /> Play All
+                                </button>
+                                <button className="flex-1 bg-white/5 text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-white/10 transition-all border border-white/5">
+                                    <Shuffle className="w-4 h-4" /> Shuffle
                                 </button>
                             </div>
                         </motion.div>
-                    ))}
+                    </div>
+
+                    {/* Right Column: Video List */}
+                    <div className="lg:col-span-7">
+                        <div className="space-y-4 max-h-[700px] overflow-y-auto pr-4 custom-scrollbar">
+                            {playlist.videos.map((video, index) => (
+                                <motion.div
+                                    key={video.id}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    onClick={() => handleVideoSelect(video.id)}
+                                    className={cn(
+                                        "group flex gap-5 p-4 rounded-2xl transition-all duration-300 cursor-pointer border",
+                                        activeVideoId === video.id
+                                            ? "bg-accent/10 border-accent/20"
+                                            : "bg-surface/20 border-white/5 hover:bg-surface/40 hover:border-white/10"
+                                    )}
+                                >
+                                    <div className="relative w-44 aspect-video rounded-xl overflow-hidden flex-shrink-0 shadow-lg">
+                                        <img
+                                            src={video.thumbnail}
+                                            alt={video.title}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                                        <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] font-bold text-white border border-white/10">
+                                            {video.duration}
+                                        </div>
+                                        {activeVideoId === video.id && (
+                                            <div className="absolute inset-0 border-2 border-accent rounded-xl z-10"></div>
+                                        )}
+                                    </div>
+
+                                    <div className="flex-1 min-w-0 flex flex-col justify-center">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-[10px] font-mono text-secondary/40 font-bold uppercase tracking-widest">
+                                                Video {index + 1}
+                                            </span>
+                                            {activeVideoId === video.id && (
+                                                <span className="flex h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+                                            )}
+                                        </div>
+                                        <h3 className={cn(
+                                            "font-bold text-lg mb-2 line-clamp-2 leading-tight transition-colors",
+                                            activeVideoId === video.id ? "text-accent" : "text-white group-hover:text-accent"
+                                        )}>
+                                            {video.title}
+                                        </h3>
+                                        <div className="flex items-center gap-4 text-xs text-secondary/60">
+                                            <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {video.views}</span>
+                                            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {video.time}</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
+
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                }
+            `}} />
         </div>
     );
+}
+
+function cn(...classes: any[]) {
+    return classes.filter(Boolean).join(" ");
 }

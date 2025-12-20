@@ -11,7 +11,7 @@
     }
 
     body {
-        @apply bg-background text-primary antialiased font-sans selection:bg-accent selection:text-black;
+        @apply bg-background text-primary antialiased font-mono selection:bg-accent selection:text-black;
     }
 
     html {

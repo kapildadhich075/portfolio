@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, BarChart, MonitorPlay } from "lucide-react";
-
+import { config } from "../config";
 
 export function WorkWithMe() {
     return (
