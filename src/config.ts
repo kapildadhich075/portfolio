@@ -610,9 +610,10 @@ export const config = {
     contact: {
         heading: "Let’s build something meaningful with content at its core.",
         email: "himanshud30@gmail.com",
+        calendly: "https://calendly.com/himanshud30/30min",
         placeholder: "Tell me what you’re building and where you feel stuck.",
         socials: {
-            youtube: "https://www.youtube.com/@himanshudhich",
+            youtube: "https://www.youtube.com/@himanshudadhich2785",
             instagram: "https://www.instagram.com/himanshud30",
             linkedin: "https://www.linkedin.com/in/himanshudadhich30/",
         },

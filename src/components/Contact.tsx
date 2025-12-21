@@ -1,8 +1,32 @@
+import { useState } from "react";
 import { config } from "../config";
-import { Youtube, Linkedin, Instagram } from "lucide-react";
+import { Youtube, Linkedin, Instagram, Calendar } from "lucide-react";
 
 export function Contact() {
     const { contact } = config;
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const subject = encodeURIComponent(`Inquiry from ${formData.name}`);
+        const body = encodeURIComponent(
+            `Name: ${formData.name}\n` +
+            `Email: ${formData.email}\n\n` +
+            `Message:\n${formData.message}`
+        );
+
+        window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
     return (
         <footer id="contact" className="py-24 px-6 md:px-12 bg-background border-t border-white/10">
@@ -11,8 +35,18 @@ export function Contact() {
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                         {contact.heading}
                     </h2>
-                    <a href={`mailto:${contact.email}`} className="text-xl text-secondary hover:text-accent transition-colors">
+                    <a href={`mailto:${contact.email}`} className="text-xl text-secondary hover:text-accent transition-colors block mb-8">
                         {contact.email}
+                    </a>
+
+                    <a
+                        href={contact.calendly}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-6 py-4 bg-accent/10 border border-accent/20 rounded-xl text-accent hover:bg-accent/20 transition-all group"
+                    >
+                        <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <span className="font-bold uppercase tracking-widest text-xs">Book a Strategy Call</span>
                     </a>
 
                     <div className="flex gap-6 mt-12">
@@ -33,24 +67,47 @@ export function Contact() {
                 </div>
 
                 <div className="bg-surface p-8 rounded-2xl border border-white/5">
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
                             <label className="block text-sm font-medium text-secondary mb-2">Name</label>
-                            <input type="text" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" placeholder="Your name" />
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors"
+                                placeholder="Your name"
+                            />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-secondary mb-2">Email</label>
-                            <input type="email" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" placeholder="your@email.com" />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors"
+                                placeholder="your@email.com"
+                            />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-secondary mb-2">Message</label>
                             <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
                                 rows={4}
                                 placeholder={config.contact.placeholder}
                                 className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors resize-none"
                             ></textarea>
                         </div>
-                        <button type="button" className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-neutral-200 transition-colors uppercase tracking-widest text-xs">
+                        <button
+                            type="submit"
+                            className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-neutral-200 transition-colors uppercase tracking-widest text-xs"
+                        >
                             → Submit Inquiry
                         </button>
                     </form>
