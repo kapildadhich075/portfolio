@@ -23,7 +23,7 @@ export function WorkWithMe() {
                             <MonitorPlay className="w-6 h-6" />
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2">Content Starter Pack</h3>
-                        <p className="text-secondary mb-8 flex-grow">Perfect for founders starting their personal brand. 4 high-quality reels + 1 main narrative video.</p>
+                        <p className="text-secondary mb-8 flex-grow">Perfect for founders starting their personal brand.</p>
                         <ul className="space-y-3 mb-8 text-sm text-secondary">
                             <li className="flex gap-2"><span className="text-blue-400">•</span> Scripting & Hook Strategy</li>
                             <li className="flex gap-2"><span className="text-blue-400">•</span> Professional Editing</li>
@@ -54,8 +54,8 @@ export function WorkWithMe() {
 
                     {/* Block 3 */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 20 }}
+                        initial={{ opacity: 0, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                         className="bg-background p-8 rounded-2xl border border-white/5 flex flex-col"

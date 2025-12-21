@@ -62,7 +62,9 @@ export function Hero() {
                     transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
                     className="relative aspect-square lg:aspect-[5/6] w-full"
                 >
-                    <HeroScene />
+
+                    <img src="/src/assets/home.jpeg" alt="Background" className=" w-full h-full object-cover  rounded-xl" />
+                    {/* <HeroScene /> */}
 
                     {/* Floating Details */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none">

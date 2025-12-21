@@ -1,17 +1,32 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { config } from "../config";
 
-export function SignatureWork() {
+interface SignatureWorkProps {
+    limit?: number;
+}
+
+export function SignatureWork({ limit }: SignatureWorkProps) {
     const { signatureWork } = config;
+    const displayedWork = limit ? signatureWork.slice(0, limit) : signatureWork;
 
     return (
         <section id="signature-work" className="py-24 px-6 md:px-12 bg-background">
             <div className="container mx-auto max-w-7xl">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">Signature Work</h2>
+                <div className="flex items-center justify-between mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white">Signature Work</h2>
+                    {limit && (
+                        <Link to="/work" className="group text-white flex items-center gap-2 hover:underline transition-all">
+                            View All
+                            <ArrowUpRight className="w-5 h-5 transition-all group-hover:hidden" />
+                            <ArrowRight className="w-5 h-5 hidden group-hover:block" />
+                        </Link>
+                    )}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {signatureWork.map((work, index) => (
+                    {displayedWork.map((work, index) => (
                         <motion.a
                             key={work.id}
                             href={work.link}

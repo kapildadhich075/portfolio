@@ -103,7 +103,44 @@ export const config = {
                 solution: "Designed TG-first funnels, standardized workflows, and strong team systems.",
                 impact: "Scaled studio operations while maintaining creative consistency."
             }
+        },
+        {
+            id: "tlr",
+            title: "The Lecture Room — Content Studio & IP",
+            subtitle: "Co-Founder • Strategy • Operations",
+            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop", // Creative team / office
+            link: "/work/tlr",
+            details: {
+                bgGradient: "from-emerald-500/10 to-teal-500/10",
+                stats: [
+                    { label: "ARR", value: "₹70L+" },
+                    { label: "Views", value: "30M+" }
+                ],
+                overview: "Built and scaled a creative studio delivering content strategy and execution for brands and creators.",
+                challenge: "Balancing creative quality with scalability and fast turnaround.",
+                solution: "Designed TG-first funnels, standardized workflows, and strong team systems.",
+                impact: "Scaled studio operations while maintaining creative consistency."
+            }
+        },
+        {
+            id: "tlr",
+            title: "The Lecture Room — Content Studio & IP",
+            subtitle: "Co-Founder • Strategy • Operations",
+            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop", // Creative team / office
+            link: "/work/tlr",
+            details: {
+                bgGradient: "from-emerald-500/10 to-teal-500/10",
+                stats: [
+                    { label: "ARR", value: "₹70L+" },
+                    { label: "Views", value: "30M+" }
+                ],
+                overview: "Built and scaled a creative studio delivering content strategy and execution for brands and creators.",
+                challenge: "Balancing creative quality with scalability and fast turnaround.",
+                solution: "Designed TG-first funnels, standardized workflows, and strong team systems.",
+                impact: "Scaled studio operations while maintaining creative consistency."
+            }
         }
+
     ],
     fdiProject: {
         heading: "The FDI Project",

@@ -17,8 +17,8 @@ export function Home() {
             <ShowreelTeaser />
             <Essence />
             <WhatIDo />
-            <SignatureWork />
-            <FDIProject />
+            <SignatureWork limit={3} />
+            {/* <FDIProject /> */}
             <AboutMe />
             <WorkWithMe />
             <Contact />
