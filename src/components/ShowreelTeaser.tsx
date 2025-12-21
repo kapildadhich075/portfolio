@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { config } from "../config";
 
 export function ShowreelTeaser() {
-    const { playlist } = config;
 
     return (
         <section className="py-24 px-6 md:px-12 bg-background border-t border-white/5">
@@ -26,14 +25,14 @@ export function ShowreelTeaser() {
                             </div>
 
                             <div className="text-center">
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight">Showreel {new Date().getFullYear()}</h2>
-                                <p className="text-white/70 text-lg uppercase tracking-widest font-medium">Watch the Highlights</p>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight">{config.showreel.title}</h2>
+                                <p className="text-white/70 text-lg uppercase tracking-widest font-medium">{config.showreel.description}</p>
                             </div>
                         </div>
 
                         {/* Corner Label */}
                         <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono text-white/80">
-                            {playlist.videos.length} Videos • 12:00
+                            {config.showreel.stats}
                         </div>
                     </motion.div>
                 </Link>

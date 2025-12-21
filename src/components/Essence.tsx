@@ -70,9 +70,9 @@ export function Essence() {
                     <div className="absolute -bottom-6 -left-6 bg-surface/90 backdrop-blur border border-white/10 p-6 rounded-xl shadow-2xl">
                         <div className="flex gap-8">
                             {essence.stats.map((stat, i) => (
-                                <div key={i}>
-                                    <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                    <div className="text-xs text-secondary uppercase tracking-wider">{stat.label}</div>
+                                <div key={i} className="max-w-[150px]">
+                                    <div className="text-xl font-bold text-white leading-tight mb-1">{stat.value}</div>
+                                    <div className="text-[10px] text-secondary uppercase tracking-widest">{stat.label}</div>
                                 </div>
                             ))}
                         </div>

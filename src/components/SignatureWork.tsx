@@ -62,6 +62,9 @@ export function SignatureWork({ limit }: SignatureWorkProps) {
                                 <p className="text-sm text-secondary uppercase tracking-wider font-medium">
                                     {work.subtitle}
                                 </p>
+                                <p className="text-secondary/60 text-sm line-clamp-2">
+                                    {work.description}
+                                </p>
                             </div>
                         </motion.a>
                     ))}

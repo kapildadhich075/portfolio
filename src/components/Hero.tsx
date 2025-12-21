@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { config } from "../config";
+import { images } from "../images";
 
 
 export function Hero() {
@@ -11,7 +12,7 @@ export function Hero() {
             {/* Full-width Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/src/assets/himanshu_hero.jpg"
+                    src={images.hero.background}
                     alt="Background"
                     className="w-full h-full object-cover opacity-30"
                 />
@@ -44,14 +45,13 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <button className="group flex items-center gap-2 px-6 py-3 bg-primary text-background rounded-full font-medium hover:bg-white/90 transition-all">
-                            <Play className="w-4 h-4 fill-current" />
+                        <a href={hero.links.primary} className="group flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-neutral-200 transition-all hover:scale-105 shadow-xl">
                             {hero.buttons.primary}
-                        </button>
-                        <button className="group flex items-center gap-2 px-6 py-3 border border-secondary/20 rounded-full text-primary hover:border-accent hover:text-accent transition-all">
-                            {hero.buttons.secondary}
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        </a>
+                        <a href={hero.links.secondary} className="group flex items-center gap-2 px-8 py-4 border border-white/20 rounded-full text-white hover:border-accent hover:text-accent transition-all hover:bg-white/5">
+                            {hero.buttons.secondary}
+                        </a>
                     </div>
                 </motion.div>
 
@@ -63,7 +63,7 @@ export function Hero() {
                     className="relative aspect-square lg:aspect-[5/6] w-full"
                 >
 
-                    <img src="/src/assets/home.jpeg" alt="Background" className=" w-full h-full object-cover  rounded-xl" />
+                    <img src={images.hero.profile} alt="Background" className=" w-full h-full object-cover  rounded-xl" />
                     {/* <HeroScene /> */}
 
                     {/* Floating Details */}

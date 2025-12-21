@@ -23,17 +23,28 @@ export function FDIProject() {
                         <h3 className="text-xl text-white/90 font-medium mb-6">
                             {fdiProject.subHeading}
                         </h3>
-                        <p className="text-secondary leading-relaxed text-lg">
+                        <p className="text-secondary leading-relaxed text-lg mb-8">
                             {fdiProject.description}
                         </p>
-                    </motion.div>
 
-                    <div className="pt-8 border-t border-white/10">
-                        <div className="flex items-center gap-4 text-sm text-secondary">
-                            <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
-                            Currently filming Season 1
+                        <div className="space-y-4">
+                            <h4 className="text-white font-bold uppercase tracking-wider text-sm">Themes include:</h4>
+                            <div className="flex flex-wrap gap-3">
+                                {fdiProject.themes.map(theme => (
+                                    <span key={theme} className="px-4 py-2 rounded-full border border-white/10 text-secondary text-sm hover:border-accent/50 transition-colors">
+                                        {theme}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+
+                        <div className="pt-8 border-t border-white/10 mt-12">
+                            <div className="flex items-center gap-4 text-sm text-secondary">
+                                <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                                Currently filming Season 1
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6">

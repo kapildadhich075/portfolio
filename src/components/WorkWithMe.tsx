@@ -1,82 +1,81 @@
 import { motion } from "framer-motion";
-import { Sparkles, BarChart, MonitorPlay } from "lucide-react";
+import { config } from "../config";
+import { cn } from "../lib/utils";
 
 
 export function WorkWithMe() {
+    const { workWithMe } = config;
+
     return (
-        <section className="py-24 px-6 md:px-12 bg-surface">
+        <section id="work-with-me" className="py-24 px-6 md:px-12 bg-surface">
             <div className="container mx-auto max-w-7xl">
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Work With Me</h2>
-                    <p className="text-secondary text-lg">Choose how you want to scale your story.</p>
+                    <p className="text-secondary text-lg">Choose how deeply you want to build your content system.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Block 1 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-background p-8 rounded-2xl border border-white/5 flex flex-col"
-                    >
-                        <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400">
-                            <MonitorPlay className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Content Starter Pack</h3>
-                        <p className="text-secondary mb-8 flex-grow">Perfect for founders starting their personal brand.</p>
-                        <ul className="space-y-3 mb-8 text-sm text-secondary">
-                            <li className="flex gap-2"><span className="text-blue-400">•</span> Scripting & Hook Strategy</li>
-                            <li className="flex gap-2"><span className="text-blue-400">•</span> Professional Editing</li>
-                            <li className="flex gap-2"><span className="text-blue-400">•</span> Thumbnails & Metadata</li>
-                        </ul>
-                    </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {workWithMe.map((plan, index) => (
+                        <motion.div
+                            key={plan.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className={cn(
+                                "bg-background p-6 rounded-2xl border flex flex-col relative group hover:border-accent/30 transition-all duration-300",
+                                plan.popular ? "border-accent/40 lg:scale-105 z-10 shadow-2xl shadow-accent/5" : "border-white/5"
+                            )}
+                        >
+                            {plan.popular && (
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                                    Most Chosen
+                                </div>
+                            )}
 
-                    {/* Block 2 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="bg-background p-8 rounded-2xl border border-accent/20 relative flex flex-col"
-                    >
-                        <div className="absolute top-0 right-0 bg-accent text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>
-                        <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 text-accent">
-                            <Sparkles className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Strategy & Consultancy</h3>
-                        <p className="text-secondary mb-8 flex-grow">For brands that have a team but lack direction. We build your content engine.</p>
-                        <ul className="space-y-3 mb-8 text-sm text-secondary">
-                            <li className="flex gap-2"><span className="text-accent">•</span> Content Audit</li>
-                            <li className="flex gap-2"><span className="text-accent">•</span> Workflow Optimization</li>
-                            <li className="flex gap-2"><span className="text-accent">•</span> Weekly Strategy Calls</li>
-                        </ul>
-                    </motion.div>
+                            <div className="mb-6">
+                                <span className="text-xs font-mono text-accent opacity-50 block mb-2">{plan.id}</span>
+                                <h3 className="text-xl font-bold text-white leading-tight">{plan.title}</h3>
+                            </div>
 
-                    {/* Block 3 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 0 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-background p-8 rounded-2xl border border-white/5 flex flex-col"
-                    >
-                        <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400">
-                            <BarChart className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">End-to-End Execution</h3>
-                        <p className="text-secondary mb-8 flex-grow">We become your dedicated media house. From idea to upload.</p>
-                        <ul className="space-y-3 mb-8 text-sm text-secondary">
-                            <li className="flex gap-2"><span className="text-emerald-400">•</span> Full Production Team</li>
-                            <li className="flex gap-2"><span className="text-emerald-400">•</span> Channel Management</li>
-                            <li className="flex gap-2"><span className="text-emerald-400">•</span> Analytics & Growth</li>
-                        </ul>
-                    </motion.div>
+                            <div className="mb-6">
+                                <p className="text-xs text-secondary font-medium uppercase tracking-wider mb-2">Best for:</p>
+                                <p className="text-sm text-secondary leading-relaxed">{plan.bestFor}</p>
+                            </div>
+
+                            <ul className="space-y-3 mb-8 flex-grow">
+                                {plan.features.map((feature, i) => (
+                                    <li key={i} className="text-sm text-secondary/80 flex gap-2">
+                                        <div className="w-1 h-1 rounded-full bg-accent/40 mt-2 shrink-0" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="pt-6 border-t border-white/5 space-y-4 text-center">
+                                <div>
+                                    <p className="text-[10px] text-secondary/40 uppercase tracking-widest mb-1">Outcome</p>
+                                    <p className="text-xs text-white font-medium">{plan.outcome}</p>
+                                </div>
+                                <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg">
+                                    <div className="text-left">
+                                        <p className="text-[8px] text-secondary/40 uppercase tracking-widest">Investment</p>
+                                        <p className="text-xs text-white font-bold">{plan.investment}</p>
+                                    </div>
+                                    <div className="text-right border-l border-white/10 pl-3">
+                                        <p className="text-[8px] text-secondary/40 uppercase tracking-widest">Duration</p>
+                                        <p className="text-xs text-white/60">{plan.duration}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
 
-                <div className="text-center mt-12">
-                    <button className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-colors">
+                <div className="text-center mt-16">
+                    <a href="#contact" className="inline-flex h-14 items-center justify-center px-10 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all hover:scale-105 shadow-xl">
                         Send Me an Inquiry
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

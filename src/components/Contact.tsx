@@ -44,10 +44,14 @@ export function Contact() {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-secondary mb-2">Message</label>
-                            <textarea rows={4} className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors resize-none" placeholder="Tell me about your project..."></textarea>
+                            <textarea
+                                rows={4}
+                                placeholder={config.contact.placeholder}
+                                className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors resize-none"
+                            ></textarea>
                         </div>
-                        <button type="button" className="w-full bg-accent text-black font-bold py-4 rounded-lg hover:bg-accent/90 transition-colors">
-                            Submit Inquiry
+                        <button type="button" className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-neutral-200 transition-colors uppercase tracking-widest text-xs">
+                            → Submit Inquiry
                         </button>
                     </form>
                 </div>

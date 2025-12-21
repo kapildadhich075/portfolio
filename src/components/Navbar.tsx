@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { config } from "../config";
 import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 
@@ -27,14 +26,17 @@ export function Navbar() {
             <div className="flex items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
                 <div className="text-xl font-bold tracking-tighter text-primary">HD.</div>
                 <div className="hidden md:flex gap-8">
-                    <a href={config.hero.links.primary} className="text-secondary hover:text-primary transition-colors text-xl">
+                    <a href="#signature-work" className="text-secondary hover:text-primary transition-colors text-xl">
                         Work
                     </a>
-                    <a href={config.hero.links.secondary} className="text-secondary hover:text-primary transition-colors text-xl">
-                        Contact
-                    </a>
-                    <a href={config.hero.links.content} className="text-secondary hover:text-primary transition-colors text-xl">
+                    <a href="/work" className="text-secondary hover:text-primary transition-colors text-xl">
                         Content
+                    </a>
+                    <a href="#about" className="text-secondary hover:text-primary transition-colors text-xl">
+                        Background
+                    </a>
+                    <a href="#contact" className="text-secondary hover:text-primary transition-colors text-xl">
+                        Contact
                     </a>
                 </div>
             </div>
