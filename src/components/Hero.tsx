@@ -28,17 +28,17 @@ export function Hero() {
                 >
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <h1 className="text-5xl md:text-5xl font-bold tracking-tighter text-primary font-mono">
+                            <h1 className="text-5xl md:text-5xl font-bold tracking-tighter text-primary">
                                 {hero.heading}
                             </h1>
-                            <h2 className="text-lg  text-accent font-mono max-w-lg">
+                            <h2 className="text-lg  text-accent max-w-lg">
                                 {hero.subHeading}
                             </h2>
                         </div>
 
                         <div className="space-y-6 pt-4">
                             {about.bio.map((para, i) => (
-                                <p key={i} className="text-base  text-secondary/90 leading-relaxed font-mono max-w-2xl">
+                                <p key={i} className="text-base  text-secondary/90 leading-relaxed max-w-2xl">
                                     {para}
                                 </p>
                             ))}
@@ -48,10 +48,10 @@ export function Hero() {
                     {/* Values & Skills Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-white/10">
                         <div className="space-y-4">
-                            <h3 className="text-white font-bold uppercase tracking-wider text-xs font-mono">I care deeply about:</h3>
+                            <h3 className="text-white font-bold uppercase tracking-wider text-xs">I care deeply about:</h3>
                             <ul className="space-y-3">
                                 {about.values.map((value, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-secondary text-base font-mono">
+                                    <li key={i} className="flex items-center gap-3 text-secondary text-base">
                                         <div className="w-1 h-1 rounded-full bg-accent" />
                                         {value}
                                     </li>
@@ -60,10 +60,10 @@ export function Hero() {
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="text-white font-bold uppercase tracking-wider text-xs font-mono">What I bring to the table:</h3>
+                            <h3 className="text-white font-bold uppercase tracking-wider text-xs">What I bring to the table:</h3>
                             <ul className="space-y-3">
                                 {about.skills.map((skill, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-secondary text-base font-mono">
+                                    <li key={i} className="flex items-center gap-3 text-secondary text-base">
                                         <div className="w-1 h-1 rounded-full bg-white/40" />
                                         {skill}
                                     </li>
@@ -73,11 +73,11 @@ export function Hero() {
                     </div>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <a href={hero.links.primary} className="group flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-neutral-200 transition-all hover:scale-105 shadow-xl font-mono text-sm">
+                        <a href={hero.links.primary} className="group flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-neutral-200 transition-all hover:scale-105 shadow-xl text-sm">
                             {hero.buttons.primary}
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
-                        <a href={hero.links.secondary} className="group flex items-center gap-2 px-8 py-4 border border-white/20 rounded-full text-white hover:border-accent hover:text-accent transition-all hover:bg-white/5 font-mono text-sm">
+                        <a href={hero.links.secondary} className="group flex items-center gap-2 px-8 py-4 border border-white/20 rounded-full text-white hover:border-accent hover:text-accent transition-all hover:bg-white/5 text-sm">
                             {hero.buttons.secondary}
                         </a>
                         <a

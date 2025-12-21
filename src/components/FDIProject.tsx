@@ -16,7 +16,7 @@ export function FDIProject() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-accent font-mono text-sm tracking-widest uppercase mb-4 block">Featured Series</span>
+                        <span className="text-accent text-sm tracking-widest uppercase mb-4 block">Featured Series</span>
                         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
                             {fdiProject.heading}
                         </h2>

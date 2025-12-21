@@ -37,7 +37,7 @@ export function ShowreelTeaser() {
                         </div>
 
                         {/* Corner Label */}
-                        {/* <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono text-white/80">
+                        {/* <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/80">
                             {config.showreel.stats}
                         </div> */}
                     </motion.div>

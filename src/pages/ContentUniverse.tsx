@@ -128,7 +128,7 @@ export function ContentUniverse() {
                                         <Play className="w-6 h-6 text-white fill-white" />
                                     </div>
                                 </div>
-                                <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono text-white/90 border border-white/10">
+                                <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white/90 border border-white/10">
                                     {playlist.videos.length} VIDEOS
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ export function ContentUniverse() {
 
                                     <div className="flex-1 min-w-0 flex flex-col justify-center">
                                         <div className="flex items-center gap-2 mb-2">
-                                            <span className="text-[10px] font-mono text-secondary/40 font-bold uppercase tracking-widest">
+                                            <span className="text-[10px] text-secondary/40 font-bold uppercase tracking-widest">
                                                 Video {index + 1}
                                             </span>
                                             {activeVideoId === video.id && (

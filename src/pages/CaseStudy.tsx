@@ -171,7 +171,7 @@ export function CaseStudy() {
             <section className="px-6 md:px-12 py-12">
                 <div className="container mx-auto max-w-7xl">
                     <div className="aspect-video rounded-2xl bg-surface border border-white/5 overflow-hidden flex items-center justify-center relative group">
-                        <span className="text-secondary/20 uppercase tracking-widest font-mono">[ Main Visual / Video Embed ]</span>
+                        <span className="text-secondary/20 uppercase tracking-widest">[ Main Visual / Video Embed ]</span>
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">

@@ -35,7 +35,7 @@ export function WorkWithMe() {
                             )}
 
                             <div className="mb-6">
-                                <span className="text-xs font-mono text-accent opacity-50 block mb-2">{plan.id}</span>
+                                <span className="text-xs text-accent opacity-50 block mb-2">{plan.id}</span>
                                 <h3 className="text-xl font-bold text-white leading-tight">{plan.title}</h3>
                             </div>
 

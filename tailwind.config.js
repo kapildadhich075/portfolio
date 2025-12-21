@@ -12,8 +12,8 @@ export default {
         "accent-dim": "rgba(212, 175, 55, 0.1)",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Inter", "sans-serif"], // Could swap for a more display-heavy font if imported
+        sans: ["Outfit", "Inter", "sans-serif"],
+        display: ["Outfit", "Inter", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
