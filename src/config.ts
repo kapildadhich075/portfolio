@@ -140,57 +140,381 @@ export const config = {
         videos: [
             {
                 id: "1",
+                title: "The Lecture Room | A Company in making",
+                views: "240 views",
+                time: "3 years ago",
+                duration: "0:15",
+                thumbnail: images.playlist.tlrIntro,
+                link: "https://youtu.be/xEt0_TFvKqc"
+            },
+            {
+                id: "2",
                 title: "The TRUTH About Ola Electric - Startup Case Study",
                 views: "73K views",
                 time: "1 year ago",
                 duration: "9:33",
                 thumbnail: images.playlist.olaElectric,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
-            },
-            {
-                id: "2",
-                title: "How @FanCode Is Changing Sports Consumption in India?",
-                views: "12K views",
-                time: "1 year ago",
-                duration: "59:30",
-                thumbnail: images.playlist.fanCode,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/rEOx2SDIv7c"
             },
             {
                 id: "3",
-                title: "I Spent a Day at Scaler School of Business and Found Out The TRUTH",
-                views: "3.5K views",
-                time: "8 months ago",
-                duration: "26:44",
-                thumbnail: images.playlist.scaler,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                title: "How @FanCode Is Changing Sports Consumption in India?",
+                views: "12K views",
+                time: "1 year ago",
+                duration: "59:39",
+                thumbnail: images.playlist.fancode,
+                link: "https://youtu.be/Qq4wWHlgncw"
             },
             {
                 id: "4",
+                title: "I Spent a Day at Scaler School of Business and Found Out The TRUTH",
+                views: "3.5K views",
+                time: "9 months ago",
+                duration: "26:44",
+                thumbnail: images.playlist.scaler,
+                link: "https://youtu.be/Ac7r4zkCuyk"
+            },
+            {
+                id: "5",
                 title: "Innovating for a Greener India: Chara CEO Bhakta Keshavachar",
                 views: "141 views",
                 time: "1 year ago",
                 duration: "31:47",
                 thumbnail: images.playlist.chara,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/vWW0MIXr__Y"
             },
             {
-                id: "5",
-                title: "The Decline of Dunzo!... What Happened? | Startup Case Study",
+                id: "6",
+                title: "The Decline of Dunzo! What Happened?",
                 views: "480K views",
                 time: "2 years ago",
                 duration: "7:59",
                 thumbnail: images.playlist.dunzo,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/4vOrJewXBQ8"
             },
             {
-                id: "6",
-                title: "Building the Future of Indian Infrastructure",
-                views: "120K views",
-                time: "3 weeks ago",
-                duration: "14:20",
-                thumbnail: images.playlist.infrastructure,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                id: "7",
+                title: "VFS GLOBAL | HR Services",
+                views: "9 views",
+                time: "1 year ago",
+                duration: "4:13",
+                thumbnail: images.playlist.vfs,
+                link: "https://youtu.be/N105xZHCHck"
+            },
+            {
+                id: "8",
+                title: "GM Gukesh X Bluestone Jewellery X TLR Studios",
+                views: "4 views",
+                time: "11 months ago",
+                duration: "1:30",
+                thumbnail: images.playlist.bluestone,
+                link: "https://youtu.be/CT9uUEg4Ep0"
+            },
+            {
+                id: "9",
+                title: "CoinDCX In-App Videos",
+                views: "15 views",
+                time: "1 year ago",
+                duration: "4:18",
+                thumbnail: images.playlist.coindcx,
+                link: "https://youtu.be/VPxs3SAJh2k"
+            },
+            {
+                id: "10",
+                title: "HanuMan Vs Adipurush Teaser | Why Small Films Are Beating Bollywood!",
+                views: "3.6M views",
+                time: "3 years ago",
+                duration: "11:20",
+                thumbnail: images.playlist.hanuman,
+                link: "https://youtu.be/l7vIXb4d6mE"
+            },
+            {
+                id: "11",
+                title: "How Foreign Universities are Spreading the ANTI HINDU Agenda!",
+                views: "143K views",
+                time: "1 year ago",
+                duration: "23:31",
+                thumbnail: images.playlist.foreignUniversities,
+                link: "https://youtu.be/uxcjLHjpRzE"
+            },
+            {
+                id: "12",
+                title: "Finnable In-app Videos",
+                views: "12 views",
+                time: "1 year ago",
+                duration: "2:13",
+                thumbnail: images.playlist.finnable,
+                link: "https://youtu.be/0pjOJZ_Dipo"
+            },
+            {
+                id: "13",
+                title: "ReadyAssist Event Aftermovie",
+                views: "5 views",
+                time: "1 year ago",
+                duration: "1:11",
+                thumbnail: images.playlist.readyAssist,
+                link: "https://youtu.be/PCvGW2p-gDA"
+            },
+            {
+                id: "14",
+                title: "Convey By Finnovationz | Talking Head Sample",
+                views: "11 views",
+                time: "2 years ago",
+                duration: "1:51",
+                thumbnail: images.playlist.convey,
+                link: "https://youtu.be/n_-nSJlapaM"
+            },
+            {
+                id: "15",
+                title: "How OLA ELECTRIC became the Ultimate EV MARKET LEADER?",
+                views: "196 views",
+                time: "1 year ago",
+                duration: "6:09",
+                thumbnail: images.playlist.olaCase,
+                link: "https://youtu.be/hbfksNX5sDk"
+            },
+            {
+                id: "16",
+                title: "5 Years @ Google: Learnings as a Software Engineer",
+                views: "13K views",
+                time: "2 years ago",
+                duration: "13:54",
+                thumbnail: images.playlist.google,
+                link: "https://youtu.be/2BEoWYk4x8w"
+            },
+            {
+                id: "17",
+                title: "BYE-JU’S",
+                views: "335K views",
+                time: "2 years ago",
+                duration: "34:38",
+                thumbnail: images.playlist.byejus,
+                link: "https://youtu.be/k0JrOj03Hec"
+            },
+            {
+                id: "18",
+                title: "VizX - AI Chef Assistant",
+                views: "372 views",
+                time: "2 years ago",
+                duration: "1:08",
+                thumbnail: images.playlist.vizx,
+                link: "https://youtu.be/pV9OAafXrrM"
+            },
+            {
+                id: "19",
+                title: "Indian Startup News 195: PhysicsWallah Launches a School",
+                views: "74K views",
+                time: "1 year ago",
+                duration: "10:04",
+                thumbnail: images.playlist.pw,
+                link: "https://youtu.be/isY4a634RIw"
+            },
+            {
+                id: "20",
+                title: "Documentary Production | The Lecture Room",
+                views: "50 views",
+                time: "3 years ago",
+                duration: "0:24",
+                thumbnail: images.playlist.documentary,
+                link: "https://youtu.be/yw5sLn-V4PA"
+            },
+            {
+                id: "21",
+                title: "WTF Is \"South Asia\"?",
+                views: "232K views",
+                time: "3 years ago",
+                duration: "11:51",
+                thumbnail: images.playlist.southAsia,
+                link: "https://youtu.be/1V1-UU4NYJ8"
+            },
+            {
+                id: "22",
+                title: "ScanX - QR based inventory tracking",
+                views: "468 views",
+                time: "2 years ago",
+                duration: "1:13",
+                thumbnail: images.playlist.scanx,
+                link: "https://youtu.be/V3s53qf-VkM"
+            },
+            {
+                id: "23",
+                title: "Is it worth learning Flutter in 2024 and Beyond?",
+                views: "86K views",
+                time: "1 year ago",
+                duration: "13:41",
+                thumbnail: images.playlist.flutter,
+                link: "https://youtu.be/vk3MkIdeN-0"
+            },
+            {
+                id: "24",
+                title: "Elevate X: Transforming Ideas into Tomorrow’s Projects",
+                views: "124 views",
+                time: "2 years ago",
+                duration: "0:59",
+                thumbnail: images.playlist.elevateX,
+                link: "https://youtu.be/w--BauI1g5U"
+            },
+            {
+                id: "25",
+                title: "Ambedkar they didn’t want you to Know",
+                views: "58K views",
+                time: "3 years ago",
+                duration: "10:25",
+                thumbnail: images.playlist.ambedkar,
+                link: "https://youtu.be/agBxrOrzFa8"
+            },
+            {
+                id: "26",
+                title: "How Indian Foreign Policy Went Into GIGACHAD Mode!",
+                views: "3M views",
+                time: "3 years ago",
+                duration: "14:02",
+                thumbnail: images.playlist.foreignPolicy,
+                link: "https://youtu.be/s6yp7yNpAEA"
+            },
+            {
+                id: "27",
+                title: "Animation Editing | The Lecture Room",
+                views: "55 views",
+                time: "4 years ago",
+                duration: "1:12",
+                thumbnail: images.playlist.animation,
+                link: "https://youtu.be/dHF14BLoUkI"
+            },
+            {
+                id: "28",
+                title: "Explainer Video Editing | The Lecture Room",
+                views: "70 views",
+                time: "4 years ago",
+                duration: "1:06",
+                thumbnail: images.playlist.explainer,
+                link: "https://youtu.be/a_MANkTAvZM"
+            },
+            {
+                id: "29",
+                title: "Discord Tech Stack",
+                views: "2.8K views",
+                time: "1 year ago",
+                duration: "1:07",
+                thumbnail: images.playlist.discord,
+                link: "https://youtu.be/rINK4Ce4gHQ"
+            },
+            {
+                id: "30",
+                title: "Abhi and Niyu Opens up on Veer Savarkar, India and Bharat",
+                views: "384K views",
+                time: "1 year ago",
+                duration: "1:40:00",
+                thumbnail: images.playlist.abhiNiyu,
+                link: "https://youtu.be/bB_2Ov1pHew"
+            },
+            {
+                id: "31",
+                title: "2024 Will Decide India’s Future",
+                views: "610K views",
+                time: "1 year ago",
+                duration: "1:34:28",
+                thumbnail: images.playlist.india2024,
+                link: "https://youtu.be/TI9JS2mHPjQ"
+            },
+            {
+                id: "32",
+                title: "EP-01 | Why he left Meta London & moved back to India!",
+                views: "11K views",
+                time: "2 years ago",
+                duration: "28:48",
+                thumbnail: images.playlist.meta,
+                link: "https://youtu.be/sjHbLpl7iUE"
+            },
+            {
+                id: "33",
+                title: "Advertisement Editing | The Lecture Room",
+                views: "114 views",
+                time: "4 years ago",
+                duration: "0:17",
+                thumbnail: images.playlist.adEditing,
+                link: "https://youtu.be/tCligskSFbw"
+            },
+            {
+                id: "34",
+                title: "Podcast Editing | The Lecture Room",
+                views: "13 views",
+                time: "3 years ago",
+                duration: "1:25",
+                thumbnail: images.playlist.podcast,
+                link: "https://youtu.be/fc0YGVc8Rg8"
+            },
+            {
+                id: "35",
+                title: "Khatu Wale Shyam | खाटू वाले श्याम",
+                views: "5.9K views",
+                time: "3 years ago",
+                duration: "4:16",
+                thumbnail: images.playlist.khatu,
+                link: "https://youtu.be/LSKxE2QE4io"
+            },
+            {
+                id: "36",
+                title: "Logo Animation | The Lecture Room",
+                views: "26 views",
+                time: "3 years ago",
+                duration: "0:09",
+                thumbnail: images.playlist.logo,
+                link: "https://youtu.be/7fnQ94Zglmk"
+            },
+            {
+                id: "37",
+                title: "Product Introduction | The Lecture Room",
+                views: "16 views",
+                time: "3 years ago",
+                duration: "0:25",
+                thumbnail: images.playlist.product,
+                link: "https://youtu.be/vsNFFPkLmZk"
+            },
+            {
+                id: "38",
+                title: "Free Cash Flow Yield - The #1 Valuation Multiple",
+                views: "8.5K views",
+                time: "4 years ago",
+                duration: "7:51",
+                thumbnail: images.playlist.fcf,
+                link: "https://youtu.be/AwcU3LSw7V4"
+            },
+            {
+                id: "39",
+                title: "Social Media Package | The Lecture Room",
+                views: "28 views",
+                time: "3 years ago",
+                duration: "1:29",
+                thumbnail: images.playlist.socialMedia,
+                link: "https://youtu.be/FWyc9pgxcc8"
+            },
+            {
+                id: "40",
+                title: "Shorts and Reels Editing | The Lecture Room",
+                views: "29 views",
+                time: "3 years ago",
+                duration: "0:21",
+                thumbnail: images.playlist.shorts,
+                link: "https://youtu.be/5euZi4tn71k"
+            },
+            {
+                id: "41",
+                title: "लड़के भी हारते हैं इश्क़ में (MenToo) – Poetry by Jai Ojha",
+                views: "195K views",
+                time: "5 years ago",
+                duration: "2:57",
+                thumbnail: images.playlist.poetry,
+                link: "https://youtu.be/CR7KX2xP2Fc"
+            },
+            {
+                id: "42",
+                title: "Tribe Kombucha Event Aftermovie",
+                views: "3 views",
+                time: "6 months ago",
+                duration: "0:58",
+                thumbnail: images.playlist.kombucha,
+                link: "https://youtu.be/cpm2YtfOtEI"
             }
         ]
     },
