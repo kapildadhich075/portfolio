@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Youtube } from "lucide-react";
 import { config } from "../config";
 import { images } from "../images";
 
 export function Hero() {
-    const { hero, about } = config;
+    const { hero, about, contact } = config;
 
     return (
         <section id="about" className="relative min-h-screen flex items-center pt-32 pb-24 px-6 md:px-12 overflow-hidden bg-background">
@@ -102,7 +102,21 @@ export function Hero() {
                     {/* Ambient Glows around image */}
                     <div className="absolute -top-12 -right-12 w-64 h-64 bg-accent/10 blur-[100px] pointer-events-none rounded-full" />
                     <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none rounded-full" />
+
+                    <div className="flex gap-6 mt-12">
+                        <a href={contact.socials.youtube} className="p-3 bg-surface rounded-full text-white hover:text-red-500 transition-colors">
+                            <Youtube className="w-5 h-5" />
+                        </a>
+                        <a href={contact.socials.linkedin} className="p-3 bg-surface rounded-full text-white hover:text-blue-500 transition-colors">
+                            <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a href={contact.socials.instagram} className="p-3 bg-surface rounded-full text-white hover:text-pink-500 transition-colors">
+                            <Instagram className="w-5 h-5" />
+                        </a>
+                    </div>
                 </motion.div>
+
+
             </div>
         </section>
     );
