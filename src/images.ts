@@ -2,6 +2,7 @@ export const images = {
     hero: {
         background: "/assets/himanshu_hero.jpg",
         profile: "/assets/home.jpeg",
+        himanshuVideo: "/assets/himanshuvideo.mp4",
     },
     projects: {
         creatorScaling: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2070&auto=format&fit=crop",

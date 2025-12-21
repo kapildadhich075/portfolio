@@ -20,8 +20,9 @@ export const config = {
         heading: "I build content systems — not just videos.",
         body: "Storytelling isn’t just about aesthetics. It’s about how people perceive you, why they trust you, and whether your content compounds or disappears. Over the last 6+ years, I’ve worked across studios, startups, and creator ecosystems — helping teams move from scattered output to clear, repeatable, scalable content systems.",
         stats: [
-            { label: "Overall highlights", value: "2019-2025" },
-            { label: "Strategy-led storytelling", value: "Across formats" },
+            { label: "Years Experience", value: "6+" },
+            { label: "Views Driven", value: "30M+" },
+
         ],
     },
     showreel: {

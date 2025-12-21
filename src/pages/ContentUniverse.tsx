@@ -43,8 +43,8 @@ export function ContentUniverse() {
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
                 </Link>
-                <Link to="/">
-                    <div className="text-5xl font-bold tracking-tighter text-primary">HD.</div>
+                <Link to="/" className="text-xl font-bold tracking-tighter text-primary hover:text-accent transition-colors">
+                    HD.
                 </Link>
             </nav>
 

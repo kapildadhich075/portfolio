@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "../lib/utils";
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,6 +15,12 @@ export function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const isHome = location.pathname === "/";
 
     return (
         <motion.nav
@@ -24,18 +32,42 @@ export function Navbar() {
             )}
         >
             <div className="flex items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
-                <div className="text-xl font-bold tracking-tighter text-primary">HD.</div>
+                <Link
+                    to="/"
+                    onClick={scrollToTop}
+                    className="text-xl font-bold tracking-tighter text-primary hover:text-accent transition-colors"
+                >
+                    HD.
+                </Link>
                 <div className="hidden md:flex gap-8">
-                    <a href="#signature-work" className="text-secondary hover:text-primary transition-colors text-xl">
+                    <Link
+                        to="/work"
+                        className={cn(
+                            "text-secondary hover:text-primary transition-colors text-lg",
+                            location.pathname === "/work" && "text-primary font-medium"
+                        )}
+                    >
                         Work
-                    </a>
-                    <a href="/work" className="text-secondary hover:text-primary transition-colors text-xl">
+                    </Link>
+                    <Link
+                        to="/content"
+                        className={cn(
+                            "text-secondary hover:text-primary transition-colors text-lg",
+                            location.pathname === "/content" && "text-primary font-medium"
+                        )}
+                    >
                         Content
-                    </a>
-                    <a href="#about" className="text-secondary hover:text-primary transition-colors text-xl">
+                    </Link>
+                    <a
+                        href={isHome ? "#about" : "/#about"}
+                        className="text-secondary hover:text-primary transition-colors text-lg"
+                    >
                         Background
                     </a>
-                    <a href="#contact" className="text-secondary hover:text-primary transition-colors text-xl">
+                    <a
+                        href={isHome ? "#contact" : "/#contact"}
+                        className="text-secondary hover:text-primary transition-colors text-lg"
+                    >
                         Contact
                     </a>
                 </div>

@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { SignatureWork } from "../components/SignatureWork";
 import { Contact } from "../components/Contact";
 import { motion } from "framer-motion";
 
 export function Work() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Navbar />

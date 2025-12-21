@@ -38,7 +38,9 @@ export function CaseStudy() {
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
                 </Link>
-                <div className="text-xl font-bold tracking-tighter text-primary">HD.</div>
+                <Link to="/" className="text-xl font-bold tracking-tighter text-primary hover:text-accent transition-colors">
+                    HD.
+                </Link>
             </nav>
 
             {/* Hero Header */}
@@ -132,7 +134,7 @@ export function CaseStudy() {
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
                             >
-                                <h2 className="text-2xl font-bold text-white mb-4 text-red-400">The Challenge</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-red-400">The Challenge</h2>
                                 <p className="text-secondary leading-relaxed">
                                     {details.challenge}
                                 </p>
@@ -143,7 +145,7 @@ export function CaseStudy() {
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
                             >
-                                <h2 className="text-2xl font-bold text-white mb-4 text-emerald-400">The Solution</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-emerald-400">The Solution</h2>
                                 <p className="text-secondary leading-relaxed">
                                     {details.solution}
                                 </p>

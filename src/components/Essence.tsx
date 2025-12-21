@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { PenTool, MapPin, Camera } from "lucide-react";
 import { config } from "../config";
+import { images } from "../images";
 
 export function Essence() {
     const { essence } = config;
@@ -60,7 +61,14 @@ export function Essence() {
                 >
                     <div className="aspect-[3/4] rounded-xl overflow-hidden bg-surface border border-white/5 relative group">
                         <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-                            <span className="text-secondary/20 text-xs tracking-widest uppercase">[ Portrait / Field Photo ]</span>
+                            <video
+                                src={images.hero.himanshuVideo}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                         {/* Overlay Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

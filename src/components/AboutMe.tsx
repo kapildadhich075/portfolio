@@ -6,7 +6,7 @@ export function AboutMe() {
     const { about } = config;
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-background border-t border-white/5">
+        <section id="about" className="py-24 px-6 md:px-12 bg-background border-t border-white/5">
             <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="space-y-12">
                     <motion.div
