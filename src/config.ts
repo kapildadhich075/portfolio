@@ -12,7 +12,7 @@ export const config = {
         },
         links: {
             primary: "#signature-work",
-            secondary: "#contact",
+            secondary: "#work-with-me",
             content: "/work",
         },
     },

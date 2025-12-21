@@ -58,12 +58,7 @@ export function Navbar() {
                     >
                         Content
                     </Link>
-                    <a
-                        href={isHome ? "#about" : "/#about"}
-                        className="text-secondary hover:text-primary transition-colors text-lg"
-                    >
-                        Background
-                    </a>
+
                     <a
                         href={isHome ? "#contact" : "/#contact"}
                         className="text-secondary hover:text-primary transition-colors text-lg"

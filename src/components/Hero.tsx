@@ -28,17 +28,17 @@ export function Hero() {
                 >
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary font-mono">
+                            <h1 className="text-5xl md:text-5xl font-bold tracking-tighter text-primary font-mono">
                                 {hero.heading}
                             </h1>
-                            <h2 className="text-xl md:text-2xl text-accent font-mono">
+                            <h2 className="text-lg  text-accent font-mono">
                                 {hero.subHeading}
                             </h2>
                         </div>
 
                         <div className="space-y-6 pt-4">
                             {about.bio.map((para, i) => (
-                                <p key={i} className="text-lg text-secondary/90 leading-relaxed font-mono max-w-2xl">
+                                <p key={i} className="text-base  text-secondary/90 leading-relaxed font-mono max-w-2xl">
                                     {para}
                                 </p>
                             ))}
