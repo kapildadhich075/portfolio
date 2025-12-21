@@ -31,7 +31,7 @@ export function Hero() {
                             <h1 className="text-5xl md:text-5xl font-bold tracking-tighter text-primary font-mono">
                                 {hero.heading}
                             </h1>
-                            <h2 className="text-lg  text-accent font-mono">
+                            <h2 className="text-lg  text-accent font-mono max-w-lg">
                                 {hero.subHeading}
                             </h2>
                         </div>

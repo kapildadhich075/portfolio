@@ -4,7 +4,7 @@ import { images } from "./images";
 export const config = {
     hero: {
         heading: "HIMANSHU DADHICH",
-        subHeading: "Storyteller • Creative Strategist • Video Producer",
+        subHeading: "Creative Strategist • Video Producer • Storyteller • Co-founder - TLR Studios",
         body: "I work at the intersection of storytelling, strategy, and execution — helping brands, founders, and creators build content systems that compound over time. I don’t chase virality. I design content that earns trust, attention, and long-term growth.",
         buttons: {
             primary: "View Work",
