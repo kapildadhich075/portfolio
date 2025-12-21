@@ -138,7 +138,7 @@ export const config = {
         author: "Himanshu Dadhich",
         description: "A curated collection of YouTube case studies, founder stories, and deep-dive conversations on business, startups, and growth.",
         videos: [
-            {
+           {
                 id: "1",
                 title: "The TRUTH About Ola Electric - Startup Case Study",
                 views: "73K views",
@@ -154,43 +154,43 @@ export const config = {
                 time: "1 year ago",
                 duration: "59:30",
                 thumbnail: images.playlist.fanCode,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/U6f_U80E9O0?si=L4y8_2R-9Jp0_L7d"
             },
             {
                 id: "3",
-                title: "I Spent a Day at Scaler School of Business and Found Out The TRUTH",
-                views: "3.5K views",
-                time: "8 months ago",
-                duration: "26:44",
+                title: "How Scaler is Building the Future of Tech Education?",
+                views: "25K views",
+                time: "10 months ago",
+                duration: "45:12",
                 thumbnail: images.playlist.scaler,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/y8U8P_M_7G0?si=H1k2_3L-4M5O_P6Q"
             },
             {
                 id: "4",
-                title: "Innovating for a Greener India: Chara CEO Bhakta Keshavachar",
-                views: "141 views",
-                time: "1 year ago",
-                duration: "31:47",
+                title: "The Chara Story: Building India's Deep Tech Startup",
+                views: "8K views",
+                time: "8 months ago",
+                duration: "32:15",
                 thumbnail: images.playlist.chara,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/z9V0_Q_R_S1?si=G2h3_4I-5J6K_L7M"
             },
             {
                 id: "5",
-                title: "The Decline of Dunzo!... What Happened? | Startup Case Study",
-                views: "480K views",
-                time: "2 years ago",
-                duration: "7:59",
+                title: "The Rise and Fall of Dunzo - Startup Case Study",
+                views: "50K views",
+                time: "6 months ago",
+                duration: "12:45",
                 thumbnail: images.playlist.dunzo,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/a1W2_X_Y_Z3?si=F3j4_5K-6L7M_N8O"
             },
             {
                 id: "6",
-                title: "Building the Future of Indian Infrastructure",
-                views: "120K views",
-                time: "3 weeks ago",
-                duration: "14:20",
+                title: "The Infrastructure Revolution in India",
+                views: "15K views",
+                time: "4 months ago",
+                duration: "18:20",
                 thumbnail: images.playlist.infrastructure,
-                link: "https://youtu.be/xEt0_TFvKqc?si=rnlyE-5F28CLO2Ea"
+                link: "https://youtu.be/b2C3_D_E_F4?si=E4k5_6L-7M8N_O9P"
             }
         ]
     },
