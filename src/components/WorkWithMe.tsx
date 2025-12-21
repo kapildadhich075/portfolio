@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { config } from "../config";
 import { cn } from "../lib/utils";
+import { Calendar } from "lucide-react";
 
 
 export function WorkWithMe() {
-    const { workWithMe } = config;
+    const { workWithMe, contact } = config;
 
     return (
         <section id="work-with-me" className="py-24 px-6 md:px-12 bg-surface">
@@ -72,9 +73,18 @@ export function WorkWithMe() {
                     ))}
                 </div>
 
-                <div className="text-center mt-16">
+                <div className="text-center mt-16 flex gap-4 justify-center">
                     <a href="#contact" className="inline-flex h-14 items-center justify-center px-10 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all hover:scale-105 shadow-xl">
                         Send Me an Inquiry
+                    </a>
+                    <a
+                        href={contact.calendly}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-6 py-4 bg-accent/10 border border-accent/20 rounded-xl text-accent hover:bg-accent/20 transition-all group"
+                    >
+                        <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <span className="font-bold uppercase tracking-widest text-xs">Book a Strategy Call</span>
                     </a>
                 </div>
             </div>

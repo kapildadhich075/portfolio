@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, Calendar, Instagram, Linkedin, Youtube } from "lucide-react";
 import { config } from "../config";
 import { images } from "../images";
 
@@ -79,6 +79,15 @@ export function Hero() {
                         </a>
                         <a href={hero.links.secondary} className="group flex items-center gap-2 px-8 py-4 border border-white/20 rounded-full text-white hover:border-accent hover:text-accent transition-all hover:bg-white/5 font-mono text-sm">
                             {hero.buttons.secondary}
+                        </a>
+                        <a
+                            href={contact.calendly}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-6 py-4 bg-accent/10 border border-accent/20 rounded-xl text-accent hover:bg-accent/20 transition-all group"
+                        >
+                            <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                            <span className="font-bold uppercase tracking-widest text-xs">Book a Strategy Call</span>
                         </a>
                     </div>
                 </motion.div>
