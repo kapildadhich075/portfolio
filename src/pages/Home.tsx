@@ -3,7 +3,7 @@ import { Hero } from "../components/Hero";
 import { Essence } from "../components/Essence";
 import { WhatIDo } from "../components/WhatIDo";
 import { SignatureWork } from "../components/SignatureWork";
-import { FDIProject } from "../components/FDIProject";
+
 import { AboutMe } from "../components/AboutMe";
 import { WorkWithMe } from "../components/WorkWithMe";
 import { Contact } from "../components/Contact";
@@ -18,7 +18,7 @@ export function Home() {
             <Essence />
             <WhatIDo />
             <SignatureWork limit={3} />
-            {/* <FDIProject /> */}
+
             <AboutMe />
             <WorkWithMe />
             <Contact />

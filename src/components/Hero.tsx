@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { config } from "../config";
-import { HeroScene } from "./HeroScene";
+
 
 export function Hero() {
     const { hero } = config;
