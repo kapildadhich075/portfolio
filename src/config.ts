@@ -113,6 +113,27 @@ export const config = {
                 solution: "Designed TG-first funnels, standardized workflows, and strong team systems.",
                 impact: "Scaled studio operations while maintaining creative consistency."
             }
+        },
+        {
+            id: "bluestone",
+            title: "Creative Content Systems — BlueStone",
+            subtitle: "Creative Strategy • Content Systems • AI Prototyping",
+            image: images.playlist.bluestone,
+            link: "/work/bluestone",
+            description: "Leading creative strategy, content development, and AI-powered production systems for India's leading fine jewellery brand.",
+            details: {
+                bgGradient: "from-indigo-500/10 to-cyan-500/10",
+                stats: [
+                    { label: "Duration", value: "4 Months" },
+                    { label: "Location", value: "On-site (BLR)" },
+                    { label: "Role", value: "Freelance" },
+                    { label: "Focus", value: "Creative Strategy" }
+                ],
+                overview: "Led the creative direction and strategic content development at BlueStone, designing high-impact visual narratives across brand films, social-first video content, and influencer marketing campaigns. Created systematic content frameworks that turned business objectives into scalable, engaging narratives, while pioneering AI-powered workflows for faster concept validation, creative prototyping, and asset production.",
+                challenge: "BlueStone needed to scale its digital presence and launch campaigns across a highly fragmented consumer market (ranging from daily-wear buyers to high-end fine jewellery collectors) while maintaining premium brand aesthetics, fast production cycles, and platform-native engagement across organic and paid channels.",
+                solution: "Built a structured, multi-pillar content engine covering brand storytelling, product communication, influencer marketing, and interactive store activations. Streamlined end-to-end video execution from scripting to post-production, and integrated advanced AI tools to prototype visual concepts rapidly, reducing production planning cycles and accelerating creative output.",
+                impact: "Successfully launched multiple product and seasonal campaigns, established a high-performing influencer content ecosystem, and drastically cut down creative conceptualization time by introducing AI-driven storyboarding and prototyping workflows."
+            }
         }
     ],
     fdiProject: {
