@@ -1,72 +1,22 @@
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { cn } from "../lib/utils";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { config } from "../config";
 
 export function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
-
+    const [open, setOpen] = useState(false);
+    const { pathname } = useLocation();
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        const close = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+        window.addEventListener("keydown", close);
+        return () => window.removeEventListener("keydown", close);
     }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    const isHome = location.pathname === "/";
-
-    return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                scrolled ? "bg-black/50 backdrop-blur-md border-b border-white/5 py-4" : "py-6"
-            )}
-        >
-            <div className="flex items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
-                <Link
-                    to="/"
-                    onClick={scrollToTop}
-                    className="text-xl font-bold tracking-tighter text-primary hover:text-accent transition-colors"
-                >
-                    HD.
-                </Link>
-                <div className="hidden md:flex gap-8">
-                    <Link
-                        to="/work"
-                        className={cn(
-                            "text-secondary hover:text-primary transition-colors text-lg",
-                            location.pathname === "/work" && "text-primary font-medium"
-                        )}
-                    >
-                        Work
-                    </Link>
-                    <Link
-                        to="/content"
-                        className={cn(
-                            "text-secondary hover:text-primary transition-colors text-lg",
-                            location.pathname === "/content" && "text-primary font-medium"
-                        )}
-                    >
-                        Content
-                    </Link>
-
-                    <a
-                        href={isHome ? "#contact" : "/#contact"}
-                        className="text-secondary hover:text-primary transition-colors text-lg"
-                    >
-                        Contact
-                    </a>
-                </div>
-            </div>
-        </motion.nav>
-    );
+    const links = [{to: "/", label: "Home"}, {to: "/content", label: "Content"}, {to: "/creative-lab", label: "Creative Lab"}];
+    return <header className="site-header">
+        <Link to="/" className="wordmark" onClick={() => { setOpen(false); window.scrollTo(0,0); }}>Himanshu Dadhich</Link>
+        <nav className="desktop-nav" aria-label="Main navigation">{links.map(link => <Link key={link.to} to={link.to} aria-current={pathname === link.to ? "page" : undefined}>{link.label}</Link>)}<a href="/#studio-services">Studio</a><a href="/#contact">Contact</a></nav>
+        <a className="call-button" href={config.studio.url} target="_blank" rel="noopener noreferrer">Services <ArrowUpRight size={16} /></a>
+        <button className="menu-toggle" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+        {open && <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">{links.map(link => <Link key={link.to} to={link.to} onClick={() => setOpen(false)}>{link.label}</Link>)}<a href="/#studio-services" onClick={() => setOpen(false)}>Studio</a><a href="/#contact" onClick={() => setOpen(false)}>Contact</a></nav>}
+    </header>;
 }

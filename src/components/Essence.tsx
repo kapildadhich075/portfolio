@@ -7,10 +7,10 @@ export function Essence() {
     const { essence } = config;
 
     return (
-        <section className="relative py-24 px-6 md:px-12 bg-background border-t border-white/5 overflow-hidden">
+        <section className="relative py-24 px-6 md:px-12 bg-background border-t border-black/10 overflow-hidden">
             {/* Subtle India Map Background (Conceptual CSS Shape) */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.02] pointer-events-none">
-                <svg viewBox="0 0 200 200" className="w-full h-full fill-current text-white">
+                <svg viewBox="0 0 200 200" className="w-full h-full fill-current text-primary">
                     {/* Simplified abstract path representing map shapes */}
                     <path d="M100,20 C120,20 150,50 150,100 C150,150 120,180 100,180 C80,180 50,150 50,100 C50,50 80,20 100,20 Z" />
                 </svg>
@@ -22,7 +22,7 @@ export function Essence() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold leading-tight text-white"
+                        className="text-3xl md:text-5xl font-bold leading-tight text-primary"
                     >
                         {essence.heading}
                     </motion.h2>
@@ -59,7 +59,7 @@ export function Essence() {
                     viewport={{ once: true }}
                     className="relative"
                 >
-                    <div className="aspect-[3/4] rounded-xl overflow-hidden bg-surface border border-white/5 relative group">
+                    <div className="aspect-[3/4] rounded-xl overflow-hidden bg-surface border border-black/10 relative group">
                         <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
                             <video
                                 src={images.hero.himanshuVideo}
@@ -75,11 +75,11 @@ export function Essence() {
                     </div>
 
                     {/* Floating Stats Card */}
-                    <div className="absolute -bottom-6 -left-6 bg-surface/90 backdrop-blur border border-white/10 p-6 rounded-xl shadow-2xl">
+                    <div className="absolute -bottom-6 -left-6 bg-surface/90 backdrop-blur border border-black/10 p-6 rounded-xl shadow-2xl">
                         <div className="flex gap-8">
                             {essence.stats.map((stat, i) => (
                                 <div key={i} className="max-w-[150px]">
-                                    <div className="text-xl font-bold text-white leading-tight mb-1">{stat.value}</div>
+                                    <div className="text-xl font-bold text-primary leading-tight mb-1">{stat.value}</div>
                                     <div className="text-[10px] text-secondary uppercase tracking-widest">{stat.label}</div>
                                 </div>
                             ))}

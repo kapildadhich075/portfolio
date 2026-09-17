@@ -1,22 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { CaseStudy } from "./pages/CaseStudy";
+import { CreativeLab } from "./pages/CreativeLab";
 import { ContentUniverse } from "./pages/ContentUniverse";
-import { Work } from "./pages/Work";
 
 
 function App() {
   return (
-    <Router>
-      <main className="bg-background min-h-screen text-primary selection:bg-accent selection:text-black">
+    <MotionConfig reducedMotion="user"><Router>
+      <main className="bg-background min-h-screen text-primary selection:bg-accent selection:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/work/:id" element={<CaseStudy />} />
+          <Route path="/creative-lab" element={<CreativeLab />} />
+          <Route path="/work" element={<Navigate to="/content" replace />} />
+          <Route path="/work/:id" element={<Navigate to="/content" replace />} />
           <Route path="/content" element={<ContentUniverse />} />
         </Routes>
       </main>
-    </Router>
+    </Router></MotionConfig>
   );
 }
 

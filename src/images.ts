@@ -1,7 +1,7 @@
 export const images = {
     hero: {
         background: "/assets/himanshu_hero.jpg",
-        profile: "/assets/home.jpeg",
+        profile: "/assets/hero-optimized.jpg",
         himanshuVideo: "/assets/himanshuvideo.mp4",
         selected_work: "/assets/selected_work.jpeg"
     },

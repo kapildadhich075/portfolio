@@ -6,7 +6,7 @@ export function AboutMe() {
     const { about } = config;
 
     return (
-        <section id="about" className="py-24 px-6 md:px-12 bg-background border-t border-white/5">
+        <section id="about" className="py-24 px-6 md:px-12 bg-background border-t border-black/10">
             <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="space-y-12">
                     <motion.div
@@ -14,7 +14,7 @@ export function AboutMe() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">{about.heading}</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-primary mb-8">{about.heading}</h2>
                         <div className="space-y-6">
                             {about.bio.map((para, i) => (
                                 <p key={i} className="text-lg text-secondary leading-relaxed">
@@ -24,9 +24,9 @@ export function AboutMe() {
                         </div>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-white/10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-black/10">
                         <div className="space-y-6">
-                            <h3 className="text-white font-bold uppercase tracking-wider text-sm">I care deeply about:</h3>
+                            <h3 className="text-primary font-bold uppercase tracking-wider text-sm">I care deeply about:</h3>
                             <ul className="space-y-4">
                                 {about.values.map((value, i) => (
                                     <li key={i} className="flex items-center gap-3 text-secondary text-lg">
@@ -38,7 +38,7 @@ export function AboutMe() {
                         </div>
 
                         <div className="space-y-6">
-                            <h3 className="text-white font-bold uppercase tracking-wider text-sm">What I bring to the table:</h3>
+                            <h3 className="text-primary font-bold uppercase tracking-wider text-sm">What I bring to the table:</h3>
                             <ul className="space-y-4">
                                 {about.skills.map((skill, i) => (
                                     <li key={i} className="flex items-center gap-3 text-secondary text-lg">

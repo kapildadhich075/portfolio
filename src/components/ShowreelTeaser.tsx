@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { config } from "../config";
 import { images } from "../images";
@@ -15,24 +15,24 @@ export function ShowreelTeaser() {
                         initial={{ opacity: 0, scale: 0.98 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="aspect-[21/9] w-full bg-surface rounded-2xl overflow-hidden border border-white/10 relative"
+                        className="aspect-[4/3] sm:aspect-[21/9] w-full bg-surface rounded-2xl overflow-hidden border border-white/10 relative"
                     >
                         {/* Background Image */}
                         <img
                             src={selectedWork}
-                            alt="Showreel Cover"
+                            alt="Selected video projects"
                             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
 
                         {/* Overlay */}
-                        <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-6 group-hover:bg-black/50 transition-colors">
+                        <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-4 sm:gap-6 group-hover:bg-black/50 transition-colors">
                             <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/20">
-                                <Play className="w-8 h-8 text-white fill-white ml-1" />
+                                <ArrowUpRight className="w-8 h-8 text-white" />
                             </div>
 
-                            <div className="text-center max-w-xl">
+                            <div className="text-center max-w-xl px-5">
                                 <h2 className="text-xl md:text-3xl font-bold text-white mb-2 tracking-tight">{config.showreel.title}</h2>
-                                <p className="text-white/70 text-sm uppercase tracking-widest font-medium">{config.showreel.description}</p>
+                                <p className="text-white/85 text-sm leading-relaxed">{config.showreel.description}</p>
                             </div>
                         </div>
 
