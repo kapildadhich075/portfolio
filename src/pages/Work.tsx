@@ -1,3 +1,4 @@
+import { StudioServices } from "../components/StudioServices";
 import { useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { SignatureWork } from "../components/SignatureWork";
@@ -12,15 +13,15 @@ export function Work() {
     return (
         <>
             <Navbar />
-            <main className="pt-20">
-                <section className="py-24 px-6 md:px-12 bg-background border-b border-white/5">
+            <div className="pt-20">
+                <section className="py-24 px-6 md:px-12 bg-background border-b border-black/10">
                     <div className="container mx-auto max-w-7xl">
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-7xl font-bold text-white mb-8"
+                            className="text-4xl md:text-7xl font-bold text-primary mb-8"
                         >
-                            All Signature Work
+                            Selected projects
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -28,12 +29,13 @@ export function Work() {
                             transition={{ delay: 0.1 }}
                             className="text-secondary text-xl max-w-2xl"
                         >
-                            A collection of my best work in storytelling, strategy, and scalable content execution.
+                            A closer look at my work across creator videos, brand campaigns, and TLR Studios.
                         </motion.p>
                     </div>
                 </section>
                 <SignatureWork />
-            </main>
+            </div>
+            <StudioServices />
             <Contact />
         </>
     );
