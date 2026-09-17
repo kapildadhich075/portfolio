@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a", // Near black
-        surface: "#121212", // Slightly lighter for cards
-        primary: "#ffffff",
-        secondary: "#a1a1aa", // Neutral gray for secondary text
-        accent: "#D4AF37", // Gold
-        "accent-dim": "rgba(212, 175, 55, 0.1)",
+        background: "#faf9f6", // Near black
+        surface: "#f0efeb", // Slightly lighter for cards
+        primary: "#181818",
+        secondary: "#62625d", // Neutral gray for secondary text
+        accent: "#242424", // Gold
+        "accent-dim": "rgba(24, 24, 24, 0.06)",
       },
       fontFamily: {
-        sans: ["Outfit", "Inter", "sans-serif"],
-        display: ["Outfit", "Inter", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        display: ["Inter", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
