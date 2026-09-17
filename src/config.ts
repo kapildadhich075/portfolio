@@ -2,56 +2,57 @@ import { Play, Brain, Settings } from "lucide-react";
 import { images } from "./images";
 
 export const config = {
+    studio: { name: "TLR Studios", url: "https://tlr-website.vercel.app/" },
     hero: {
         heading: "HIMANSHU DADHICH",
-        subHeading: "Creative Strategist • Video Producer • Storyteller • Co-founder - TLR Studios",
-        body: "I work at the intersection of storytelling, strategy, and execution — helping brands, founders, and creators build content systems that compound over time. I don’t chase virality. I design content that earns trust, attention, and long-term growth.",
+        subHeading: "Creative Strategist • Content Creator • Co-founder, TLR Studios",
+        body: "I’m a creative strategist and content creator. This is a collection of my work, the stories I make, and the projects I’ve been part of.",
         buttons: {
             primary: "View Work",
-            secondary: "Work With Me",
+            secondary: "Explore TLR services",
         },
         links: {
-            primary: "#signature-work",
-            secondary: "#work-with-me",
-            content: "/work",
+            primary: "/content",
+            secondary: "https://tlr-website.vercel.app/",
+            content: "/content",
         },
     },
     essence: {
-        heading: "I build content systems — not just videos.",
-        body: "Storytelling isn’t just about aesthetics. It’s about how people perceive you, why they trust you, and whether your content compounds or disappears. Over the last 6+ years, I’ve worked across studios, startups, and creator ecosystems — helping teams move from scattered output to clear, repeatable, scalable content systems.",
+        heading: "Strategy is my work. Creating is part of who I am.",
+        body: "My work takes me across ideas, scripts, shoots, and edits. Alongside the projects I work on with others, I create and share content of my own. This site brings those parts of my work together.",
         stats: [
-            { label: "Years Experience", value: "6+" },
-            { label: "Views Driven", value: "30M+" },
+            { label: "Years Experience", value: "7" },
+            { label: "Studio", value: "TLR" },
 
         ],
     },
     showreel: {
-        title: "Selected Work (2019–2025)",
-        description: "A short highlight of projects I’ve led across YouTube, brand films, campaigns, and creator IPs — focused on clarity, structure, and scale.",
+        title: "Take a look at the work.",
+        description: "Browse brand films, interviews, explainers, and editing work, collected by format.",
         stats: "6 projects • ~12 minutes",
     },
     whatIDo: [
         {
             title: "YouTube & Content Strategy",
-            body: "For founders and creators who want YouTube and content to work long-term. Long-form YouTube strategy, Podcast & education-led formats, Short-form systems built for retention, Content positioning & narrative direction.",
+            body: "I help you decide what to make, who it is for, and how to structure it. That includes channel planning, recurring formats, scripts, and publishing schedules.",
             cta: "Explore Content Work →",
-            link: "/work",
+            link: "/content",
             icon: Play,
             gradient: "from-blue-500/10 to-purple-500/10",
         },
         {
-            title: "Creative & Growth Consultancy",
-            body: "For teams producing content without clear direction. Messaging & positioning, Hook and story architecture, Audience insight, Performance-aware creative strategy.",
-            cta: "Book a Strategy Call →",
-            link: "#contact",
+            title: "Creative direction",
+            body: "I work on the message, the story, and the decisions that shape a video. My project archive shows how that thinking carries through into the work.",
+            cta: "Explore the projects →",
+            link: "/content",
             icon: Brain,
             gradient: "from-amber-500/10 to-orange-500/10",
         },
         {
-            title: "End-to-End Execution",
-            body: "For brands that want one accountable creative partner. Scripting & creative direction, Production & post-production, Workflow & team coordination, Scalable delivery systems.",
-            cta: "Get a Complete Solution →",
-            link: "#contact",
+            title: "Video production",
+            body: "For projects that need a production team, I work with TLR Studios. We bring together scripting, filming, editing, and delivery.",
+            cta: "Explore TLR services →",
+            link: "https://tlr-website.vercel.app/",
             icon: Settings,
             gradient: "from-emerald-500/10 to-teal-500/10",
         },
@@ -59,21 +60,21 @@ export const config = {
     signatureWork: [
         {
             id: "creator-scaling",
-            title: "Scaling Creator IPs — YouTube & Podcasts",
+            title: "YouTube & podcasts",
             subtitle: "Strategy • Production • Growth",
             image: images.projects.creatorScaling,
             link: "/work/creator-scaling",
-            description: "Helping creators turn individual videos into structured, growing IPs.",
+            description: "Planning and producing long-form videos, interviews, and recurring creator formats.",
             details: {
                 bgGradient: "from-orange-500/10 to-red-500/10",
                 stats: [
-                    { label: "Combined Views", value: "100M+" },
-                    { label: "Channels", value: "Multiple" }
+                    { label: "Format", value: "Long-form" },
+                    { label: "Work", value: "YouTube & podcasts" }
                 ],
-                overview: "Worked closely with large creator IPs to scale long-form conversations, podcasts, and YouTube storytelling.",
-                challenge: "Maintaining depth and authenticity while scaling output and audience size.",
-                solution: "Built repeatable formats, strong narrative hooks, and creator-first workflows optimized for YouTube retention.",
-                impact: "Helped creators establish authority, consistency, and long-term audience trust."
+                overview: "Worked with creators on long-form conversations, podcasts, and YouTube videos, from shaping a format to getting episodes ready to publish.",
+                challenge: "Publishing regularly while giving each conversation enough time and attention.",
+                solution: "Developed episode formats, opening sequences, and editing workflows around each creator’s voice.",
+                impact: "The work brought format planning, production, and editing into a shared process for recurring episodes."
             }
         },
         {
@@ -82,17 +83,17 @@ export const config = {
             subtitle: "Story • Design • Performance",
             image: images.projects.brandFilms,
             link: "/work/brand-films",
-            description: "Narrative-driven brand films designed for perception and outcomes.",
+            description: "Brand films, product explainers, and campaign videos for different audiences and platforms.",
             details: {
                 bgGradient: "from-blue-500/10 to-purple-500/10",
                 stats: [
                     { label: "Industries", value: "Fintech, Lifestyle, Education" },
-                    { label: "Clients", value: "40+" }
+                    { label: "Deliverables", value: "Films & explainers" }
                 ],
-                overview: "High-impact brand films, explainers, onboarding videos, and ads for startups and enterprises.",
-                challenge: "Translating business goals into stories that don’t feel like ads.",
-                solution: "Audience-first narratives backed by clean design, clear messaging, and platform-native execution.",
-                impact: "Improved engagement, trust, and conversion across campaigns."
+                overview: "Produced brand films, explainers, onboarding videos, and ads for startups and established businesses.",
+                challenge: "Turning a detailed business brief into a video with one clear message.",
+                solution: "Started with the audience and the message, then developed the script, visual approach, and edits for each platform.",
+                impact: "Delivered films and supporting edits for brand campaigns, product communication, and customer onboarding."
             }
         },
         {
@@ -101,26 +102,26 @@ export const config = {
             subtitle: "Co-Founder • Strategy • Operations",
             image: images.projects.tlr,
             link: "/work/tlr",
-            description: "A creative studio built around learning, storytelling, and execution.",
+            description: "The studio I co-founded to work on content strategy and video production.",
             details: {
                 bgGradient: "from-emerald-500/10 to-teal-500/10",
                 stats: [
-                    { label: "ARR", value: "₹70L+" },
-                    { label: "Views", value: "30M+" }
+                    { label: "Role", value: "Co-founder" },
+                    { label: "Focus", value: "Strategy & production" }
                 ],
-                overview: "Built and scaled a creative studio delivering content strategy and execution for brands and creators.",
-                challenge: "Balancing creative quality with scalability and fast turnaround.",
-                solution: "Designed TG-first funnels, standardized workflows, and strong team systems.",
-                impact: "Scaled studio operations while maintaining creative consistency."
+                overview: "Co-founded The Lecture Room, also known as TLR Studios, to bring content planning and production under one roof.",
+                challenge: "Keeping projects organised while the team handles different briefs, schedules, and revisions.",
+                solution: "Set up shared briefs, production workflows, and review stages so the team could work from a clear plan.",
+                impact: "My role spans creative direction, project planning, and the day-to-day work of running the studio."
             }
         },
         {
             id: "bluestone",
-            title: "Creative Content Systems — BlueStone",
+            title: "Creative direction for BlueStone",
             subtitle: "Creative Strategy • Content Systems • AI Prototyping",
             image: images.playlist.bluestone,
             link: "/work/bluestone",
-            description: "Leading creative strategy, content development, and AI-powered production systems for India's leading fine jewellery brand.",
+            description: "Creative direction, video content, and visual prototyping for a jewellery brand.",
             details: {
                 bgGradient: "from-indigo-500/10 to-cyan-500/10",
                 stats: [
@@ -129,26 +130,26 @@ export const config = {
                     { label: "Role", value: "Freelance" },
                     { label: "Focus", value: "Creative Strategy" }
                 ],
-                overview: "Led the creative direction and strategic content development at BlueStone, designing high-impact visual narratives across brand films, social-first video content, and influencer marketing campaigns. Created systematic content frameworks that turned business objectives into scalable, engaging narratives, while pioneering AI-powered workflows for faster concept validation, creative prototyping, and asset production.",
-                challenge: "BlueStone needed to scale its digital presence and launch campaigns across a highly fragmented consumer market (ranging from daily-wear buyers to high-end fine jewellery collectors) while maintaining premium brand aesthetics, fast production cycles, and platform-native engagement across organic and paid channels.",
-                solution: "Built a structured, multi-pillar content engine covering brand storytelling, product communication, influencer marketing, and interactive store activations. Streamlined end-to-end video execution from scripting to post-production, and integrated advanced AI tools to prototype visual concepts rapidly, reducing production planning cycles and accelerating creative output.",
-                impact: "Successfully launched multiple product and seasonal campaigns, established a high-performing influencer content ecosystem, and drastically cut down creative conceptualization time by introducing AI-driven storyboarding and prototyping workflows."
+                overview: "Worked on creative direction and content development for BlueStone across brand films, social videos, and influencer campaigns. The role also included using AI tools to explore visual concepts before production.",
+                challenge: "Creating content for different jewellery buyers and campaign needs while keeping a consistent visual style.",
+                solution: "Organised ideas around brand stories, product communication, influencer content, and store activations. Used scripts, storyboards, and AI-assisted prototypes to align the team before filming and editing.",
+                impact: "Contributed to product and seasonal campaigns, influencer content, and a visual prototyping process for reviewing ideas before production."
             }
         }
     ],
     fdiProject: {
         heading: "The FDI Project",
         subHeading: "A cinematic explainer series on India’s growth.",
-        description: "An independent, research-led series exploring how infrastructure, investment, and systems are shaping modern India — told through clear visuals, grounded storytelling, and on-ground context.",
+        description: "A research-led series about infrastructure, investment, and the systems shaping everyday life in India.",
         themes: ["Cities", "Infrastructure", "Digital Public Goods", "Investment", "India’s Future"],
         episodes: [
             {
-                title: "FDI Explained — Episode 1",
+                title: "FDI Explained : Episode 1",
                 tags: ["Cities", "Investment", "India’s Future"],
                 image: images.fdi.episode1,
             },
             {
-                title: "FDI Explained — Episode 2",
+                title: "FDI Explained : Episode 2",
                 tags: ["Infrastructure", "Growth", "Economy"],
                 image: images.fdi.episode2,
             },
@@ -521,7 +522,7 @@ export const config = {
             },
             {
                 id: "41",
-                title: "लड़के भी हारते हैं इश्क़ में (MenToo) – Poetry by Jai Ojha",
+                title: "लड़के भी हारते हैं इश्क़ में (MenToo): Poetry by Jai Ojha",
                 views: "195K views",
                 time: "5 years ago",
                 duration: "2:57",
@@ -542,97 +543,27 @@ export const config = {
     about: {
         heading: "Hi, I’m Himanshu.",
         bio: [
-            "I’m a creative strategist and video producer with 6+ years of experience building content for brands, startups, and creators.",
-            "My work lives where storytelling meets business — where content isn’t just engaging, but intentional and repeatable.",
-            "I’ve led studios, worked closely with founders, and helped creators scale their presence by focusing on systems over one-off wins."
+            "I’m Himanshu, a creative strategist, content creator, and co-founder of TLR Studios. I’ve spent seven years working across storytelling and video.",
+            "I like getting close to a subject, finding the story, and working out how to tell it on screen. Here, I keep a record of the projects I’ve contributed to and make space for my own creative work.",
+            "I share my own content on Instagram and YouTube. For content strategy and production services, my agency, TLR Studios, brings the team and the process together."
         ],
         values: [
-            "clarity over noise",
-            "craft over shortcuts",
-            "consistency over hype"
+            "A clear brief",
+            "Care in the details",
+            "Honest feedback"
         ],
         skills: [
-            "YouTube & long-form specialization",
-            "Strong narrative thinking",
-            "Performance-aware creativity",
-            "Team & workflow leadership",
-            "Calm, reliable execution"
+            "YouTube and long-form video",
+            "Script and story development",
+            "Creative direction",
+            "Production planning",
+            "Team coordination"
         ],
     },
-    workWithMe: [
-        {
-            id: "01",
-            title: "Strategy Intensive (One-Time)",
-            bestFor: "Founders who need clarity, fast",
-            features: [
-                "90-minute deep-dive strategy session",
-                "Clear positioning & content direction",
-                "Format & platform recommendations",
-                "Actionable 30–60 day plan"
-            ],
-            outcome: "Clarity, confidence, and a concrete next step.",
-            duration: "One-time session",
-            investment: "₹3,000",
-            accent: "purple"
-        },
-        {
-            id: "02",
-            title: "Creator Foundation (Starter Pack)",
-            bestFor: "Founders & professionals starting or rebooting their personal brand",
-            features: [
-                "Content identity & positioning",
-                "1 core narrative video",
-                "4 high-quality short-form videos",
-                "Hook & script guidance",
-                "Thumbnails, metadata & publishing notes"
-            ],
-            outcome: "A clear starting identity with ready-to-publish content.",
-            duration: "2–3 weeks",
-            investment: "Starting from ₹15,000",
-            accent: "blue"
-        },
-        {
-            id: "03",
-            title: "Content Strategy & Direction (Most Chosen)",
-            bestFor: "Creators & brands already producing content but lacking direction",
-            features: [
-                "Full content & channel audit",
-                "Story architecture & positioning clarity",
-                "Hook frameworks & narrative structure",
-                "Content calendar & format strategy",
-                "Workflow optimisation",
-                "Weekly 1:1 strategy calls"
-            ],
-            outcome: "A clear content engine your team can execute without confusion.",
-            duration: "Monthly",
-            investment: "₹25,000 – ₹45,000 / month",
-            accent: "accent",
-            popular: true
-        },
-        {
-            id: "04",
-            title: "End-to-End Content Partnership",
-            bestFor: "Brands & creators who want one accountable creative partner",
-            features: [
-                "Creative ownership from idea to upload",
-                "Scripting & narrative direction",
-                "Production & post-production",
-                "Short + long-form delivery",
-                "Team & workflow management",
-                "Performance review & growth insights"
-            ],
-            outcome: "A reliable, scalable content system without daily involvement.",
-            duration: "3–6 months",
-            investment: "Custom (based on scope)",
-            accent: "emerald"
-        },
-
-    ],
     contact: {
-        heading: "Let’s build something meaningful with content at its core.",
+        heading: "Let’s stay in touch.",
         email: "himanshud30@gmail.com",
-        calendly: "https://calendly.com/himanshud30/30min",
-        placeholder: "Tell me what you’re building and where you feel stuck.",
+        placeholder: "Say hello, share an idea, or get in touch about a creator collaboration.",
         socials: {
             youtube: "https://www.youtube.com/@himanshudadhich2785",
             instagram: "https://www.instagram.com/himanshud30",
