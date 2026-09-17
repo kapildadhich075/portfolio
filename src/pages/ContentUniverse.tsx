@@ -1,242 +1,84 @@
-import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Play, Shuffle, Clock, Eye } from "lucide-react";
-import { config } from "../config";
+import { CreatorChannels } from "../components/CreatorChannels";
+import { Contact } from "../components/Contact";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { Navbar } from "../components/Navbar";
+import { StudioServices } from "../components/StudioServices";
+import { contentSeries } from "../contentSeries";
 
 export function ContentUniverse() {
-    const { playlist } = config;
-    const [activeVideoId, setActiveVideoId] = useState(playlist.videos[0]?.id);
-    const playerRef = useRef<HTMLDivElement>(null);
+    const [params, setParams] = useSearchParams();
+    const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+    const playerRef = useRef<HTMLElement>(null);
+    const series = contentSeries.find(item => item.id === params.get("series")) ?? contentSeries[0];
+    const activeVideo = series.videos.find(video => video.id === params.get("video")) ?? series.videos[0];
+    const activeIndex = series.videos.findIndex(video => video.id === activeVideo.id);
+    const playing = playingVideo === `${series.id}:${activeVideo.id}`;
+    const totalVideos = contentSeries.reduce((total, item) => total + item.videos.length, 0);
+    const videoId = new URL(activeVideo.link).pathname.slice(1);
 
-    const activeVideo = playlist.videos.find(v => v.id === activeVideoId) || playlist.videos[0];
+    useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    // Scroll to top on mount
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    function scrollToPlayer() {
+        requestAnimationFrame(() => playerRef.current?.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            block: "start",
+        }));
+    }
 
-    const handleVideoSelect = (id: string) => {
-        setActiveVideoId(id);
-        // On mobile, we might want to scroll to the player
-        if (window.innerWidth < 1024 && playerRef.current) {
-            playerRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    function chooseSeries(id: string) {
+        setPlayingVideo(null);
+        setParams({ series: id });
+        scrollToPlayer();
+    }
 
-    const getYouTubeEmbedUrl = (url: string) => {
-        // Simple extraction of ID from common YouTube formats
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-        const videoId = (match && match[2].length === 11) ? match[2] : null;
-        return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-    };
+    function chooseVideo(id: string) {
+        setParams({ series: series.id, video: id });
+        setPlayingVideo(`${series.id}:${id}`);
+        scrollToPlayer();
+    }
 
     return (
-        <div className="bg-background min-h-screen text-primary selection:bg-accent selection:text-black ">
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex items-center justify-between">
-                <Link
-                    to="/"
-                    className="flex items-center gap-2 text-sm font-medium text-white/50 hover:text-white transition-colors bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5"
-                >
-                    <ArrowLeft className="w-4 h-4" />
-                    Back to Home
-                </Link>
-                <Link to="/" className="text-xl font-bold tracking-tighter text-primary hover:text-accent transition-colors">
-                    HD.
-                </Link>
-            </nav>
+        <>
+            <Navbar />
+            <div className="content-page">
+                <header className="page-shell content-heading">
+                    <div><p className="eyebrow">MY WORK IN VIDEO</p><h1>Different formats.<br />Plenty of stories.</h1></div>
+                    <div><p>A catalogue of projects I’ve contributed to, grouped by subject and format. For what I’m creating and sharing myself, find my personal channels below.</p><span className="library-count">{contentSeries.length} collections <span aria-hidden="true">/</span> {totalVideos} videos</span></div>
+                </header>
 
-            <div className="container mx-auto max-w-7xl px-6 md:px-12 pt-16">
-                {/* Video Player Section */}
-                <motion.div
-                    ref={playerRef}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="mt-20"
-                >
-                    <div className="relative aspect-video w-full rounded-[32px] overflow-hidden bg-black shadow-2xl border border-white/5">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeVideoId}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="w-full h-full"
-                            >
-                                <iframe
-                                    src={getYouTubeEmbedUrl(activeVideo.link)}
-                                    title={activeVideo.title}
-                                    className="w-full h-full"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Up Next / Metadata */}
-                    <div className="mt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/5 pb-8">
-                        <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{activeVideo.title}</h2>
-                            <div className="flex items-center gap-4 text-secondary/60 text-sm">
-                                <span>{playlist.author}</span>
-                                <span>•</span>
-                                <span>{activeVideo.views}</span>
-                                <span>•</span>
-                                <span>{activeVideo.time}</span>
-                            </div>
-                        </div>
-                        {activeVideoId !== playlist.videos[playlist.videos.length - 1].id && (
-                            <button
-                                onClick={() => {
-                                    const currentIndex = playlist.videos.findIndex(v => v.id === activeVideoId);
-                                    handleVideoSelect(playlist.videos[currentIndex + 1].id);
-                                }}
-                                className="flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors px-6 py-3 rounded-full border border-white/10 text-white font-medium group"
-                            >
-                                Up Next: {playlist.videos[playlist.videos.findIndex(v => v.id === activeVideoId) + 1].title.substring(0, 30)}...
-                                <Play className="w-4 h-4 fill-current group-hover:translate-x-1 transition-transform" />
+                <section className="page-shell collection-section" aria-labelledby="collections-heading">
+                    <div className="collection-heading"><h2 id="collections-heading">Find something to watch.</h2><a href="#collection-player">Go to player <ArrowDown size={15} /></a></div>
+                    <div className="collection-grid">
+                        {contentSeries.map((item, index) => (
+                            <button key={item.id} className={`collection-card ${item.id === series.id ? "is-selected" : ""}`} onClick={() => chooseSeries(item.id)} aria-pressed={item.id === series.id} aria-controls="collection-player">
+                                <div className="collection-cover"><img src={item.videos[0].thumbnail} alt="" loading="lazy" /><span className="collection-number">0{index + 1}</span><span className="collection-video-count">{item.videos.length} videos</span><span className="collection-arrow"><ArrowUpRight size={23} /></span></div>
+                                <div className="collection-card-copy"><div><h3>{item.title}</h3><span className="collection-status">{item.id === series.id ? "Selected" : "Explore"}</span></div><p>{item.description}</p></div>
                             </button>
-                        )}
+                        ))}
                     </div>
-                </motion.div>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                </section>
 
-                    {/* Left Column: Playlist Card */}
-                    <div className="lg:col-span-5">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="bg-surface/30 backdrop-blur-sm border border-white/5 rounded-[24px] p-8 sticky  overflow-hidden group"
-                        >
-                            {/* Decorative Blur */}
-                            <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 blur-[100px] pointer-events-none"></div>
-
-                            {/* Playlist Cover */}
-                            <div className="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl group/cover cursor-pointer" onClick={() => handleVideoSelect(playlist.videos[0].id)}>
-                                <img
-                                    src={playlist.videos[0].thumbnail}
-                                    alt={playlist.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-black/40 group-hover/cover:bg-black/20 transition-colors flex items-center justify-center">
-                                    <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover/cover:scale-110 transition-transform duration-300">
-                                        <Play className="w-6 h-6 text-white fill-white" />
-                                    </div>
+                <section className="playlist-section section-space" id="collection-player" ref={playerRef} aria-labelledby="playlist-heading">
+                    <div className="page-shell">
+                        <div className="playlist-heading"><div><p className="eyebrow">YOUR SELECTED COLLECTION</p><h2 id="playlist-heading">{series.title}</h2><p>{series.description}</p></div><a href="#collections-heading">Browse collections <ArrowUpRight size={17} /></a></div>
+                        <div className="playlist-layout">
+                            <div className="player-column">
+                                <div className="video-frame">
+                                    {playing ? <iframe key={`${series.id}:${activeVideo.id}`} src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`} title={activeVideo.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /> : <button className="video-poster" onClick={() => setPlayingVideo(`${series.id}:${activeVideo.id}`)} aria-label={`Play ${activeVideo.title}`}><img src={activeVideo.thumbnail} alt="" /><span className="poster-shade" /><span className="poster-play"><Play size={25} fill="currentColor" /></span><span className="poster-caption">Watch this video</span></button>}
                                 </div>
-                                <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white/90 border border-white/10">
-                                    {playlist.videos.length} VIDEOS
-                                </div>
+                                <div className="video-details"><p className="eyebrow" aria-live="polite">VIDEO {activeIndex + 1} OF {series.videos.length} <span aria-hidden="true">/</span> {activeVideo.duration}</p><h3>{activeVideo.title}</h3><a href={activeVideo.link} target="_blank" rel="noopener noreferrer">Watch on YouTube <ArrowUpRight size={16} /><span className="sr-only"> (opens in a new tab)</span></a></div>
+                                <div className="player-controls"><button disabled={activeIndex === 0} onClick={() => chooseVideo(series.videos[activeIndex - 1].id)}><ArrowLeft size={17} /> Previous video</button><button disabled={activeIndex === series.videos.length - 1} onClick={() => chooseVideo(series.videos[activeIndex + 1].id)}>Next video <ArrowRight size={17} /></button></div>
                             </div>
-
-                            <h1 className="text-3xl font-bold text-white mb-2 leading-tight tracking-tight">
-                                {playlist.title}
-                            </h1>
-                            <p className="text-sm font-medium text-accent mb-6 uppercase tracking-widest">{playlist.author}</p>
-
-                            <p className="text-secondary/70 text-base leading-relaxed mb-8 max-w-md">
-                                {playlist.description}
-                            </p>
-
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => handleVideoSelect(playlist.videos[0].id)}
-                                    className="flex-1 bg-white text-black font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-accent transition-all hover:scale-[1.02] active:scale-[0.98]"
-                                >
-                                    <Play className="w-4 h-4 fill-current" /> Play All
-                                </button>
-                                <button className="flex-1 bg-white/5 text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-white/10 transition-all border border-white/5">
-                                    <Shuffle className="w-4 h-4" /> Shuffle
-                                </button>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Column: Video List */}
-                    <div className="lg:col-span-7">
-                        <div className="space-y-4 max-h-[700px] overflow-y-auto pr-4 custom-scrollbar">
-                            {playlist.videos.map((video, index) => (
-                                <motion.div
-                                    key={video.id}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.05 }}
-                                    onClick={() => handleVideoSelect(video.id)}
-                                    className={cn(
-                                        "group flex gap-5 p-4 rounded-2xl transition-all duration-300 cursor-pointer border",
-                                        activeVideoId === video.id
-                                            ? "bg-accent/10 border-accent/20"
-                                            : "bg-surface/20 border-white/5 hover:bg-surface/40 hover:border-white/10"
-                                    )}
-                                >
-                                    <div className="relative w-44 aspect-video rounded-xl overflow-hidden flex-shrink-0 shadow-lg">
-                                        <img
-                                            src={video.thumbnail}
-                                            alt={video.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                                        <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] font-bold text-white border border-white/10">
-                                            {video.duration}
-                                        </div>
-                                        {activeVideoId === video.id && (
-                                            <div className="absolute inset-0 border-2 border-accent rounded-xl z-10"></div>
-                                        )}
-                                    </div>
-
-                                    <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <span className="text-[10px] text-secondary/40 font-bold uppercase tracking-widest">
-                                                Video {index + 1}
-                                            </span>
-                                            {activeVideoId === video.id && (
-                                                <span className="flex h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
-                                            )}
-                                        </div>
-                                        <h3 className={cn(
-                                            "font-bold text-lg mb-2 line-clamp-2 leading-tight transition-colors",
-                                            activeVideoId === video.id ? "text-accent" : "text-white group-hover:text-accent"
-                                        )}>
-                                            {video.title}
-                                        </h3>
-                                        <div className="flex items-center gap-4 text-xs text-secondary/60">
-                                            <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {video.views}</span>
-                                            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {video.time}</span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+                            <div className="queue"><div className="queue-heading"><h3>In this collection</h3><span>{series.videos.length} videos</span></div><ol className="video-queue">{series.videos.map((video, index) => <li key={video.id}><button className={`queue-item ${video.id === activeVideo.id ? "is-active" : ""}`} onClick={() => chooseVideo(video.id)} aria-current={video.id === activeVideo.id ? "true" : undefined}><div className="queue-image"><img src={video.thumbnail} alt="" loading="lazy" /><span>{video.duration}</span></div><div><span className="queue-index">{video.id === activeVideo.id ? "Selected video" : `Video ${index + 1}`}</span><h4>{video.title}</h4></div></button></li>)}</ol></div>
                         </div>
                     </div>
-                </div>
-
-
+                </section>
             </div>
-
-            <style dangerouslySetInnerHTML={{
-                __html: `
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 4px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 10px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: rgba(255, 255, 255, 0.1);
-                }
-            `}} />
-        </div>
+            <CreatorChannels />
+            <StudioServices />
+            <Contact />
+        </>
     );
-}
-
-function cn(...classes: any[]) {
-    return classes.filter(Boolean).join(" ");
 }
